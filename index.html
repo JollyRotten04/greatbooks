@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamlet - Profile</title>
+    <title>Hamlet - Social Network</title>
 <style>
     :root {
         --fb-blue: #1877f2;
@@ -86,7 +86,10 @@
     .cover-photo {
         width: 100%;
         height: 350px;
+        /* Default gradient if image fails */
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background-size: cover;
+        background-position: center;
         position: relative;
     }
 
@@ -113,6 +116,16 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+    }
+    
+    .profile-picture div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        font-size: 80px;
+        background: #e4e6eb;
     }
 
     .profile-details {
@@ -280,6 +293,13 @@
         align-items: center;
         justify-content: center;
         font-size: 20px;
+        overflow: hidden;
+    }
+    
+    .post-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     .post-info h3 {
@@ -432,19 +452,18 @@
         <div class="logo" onclick="goToHamlet()">Hamlet</div>
         <ul>
             <li><a href="#" onclick="event.preventDefault(); switchTab('about')">About</a></li>
-            <li><a href="#" onclick="event.preventDefault(); switchTab('friends')">Friends</a></li>
+            <li><a href="#" onclick="event.preventDefault(); switchTab('friends')">Characters</a></li>
             <li><a href="#" onclick="event.preventDefault(); switchTab('posts')">Story</a></li>
         </ul>
     </div>
 </nav>
 
-<!-- PROFILE HEADER -->
 <div class="profile-header">
-    <div class="cover-photo"></div>
+    <div class="cover-photo">
+        </div>
     <div class="profile-info">
         <div class="profile-picture">
-            <img id="mainProfilePic" src="./assets/hamlet.png" alt="Hamlet">
-        </div>
+            </div>
         <div class="profile-details">
             <h1 class="profile-name" id="profileName">Hamlet, Prince of Denmark</h1>
             <p class="profile-bio" id="profileBio">To be, or not to be—that is the question</p>
@@ -458,518 +477,283 @@
     </div>
 </div>
 
-<!-- MAIN CONTENT -->
 <div class="main-content">
-    <!-- LEFT SIDEBAR -->
     <div class="sidebar">
-        <!-- Intro Card -->
         <div class="info-card">
             <h2>Intro</h2>
             <div id="introContent">
-                <div class="info-item">
-                    <span class="info-icon">🎭</span>
-                    <span>Studied at University of Wittenberg</span>
                 </div>
-                <div class="info-item">
-                    <span class="info-icon">🏰</span>
-                    <span>Lives in Elsinore, Denmark</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-icon">👑</span>
-                    <span>Prince of Denmark</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-icon">💔</span>
-                    <span>It's complicated</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-icon">✍️</span>
-                    <span>Written by William Shakespeare (1599-1601)</span>
-                </div>
-            </div>
         </div>
 
-        <!-- Friends Card -->
         <div class="info-card">
             <h2>Friends</h2>
-            <p style="color: #65676b; font-size: 15px; margin-bottom: 12px;">8 friends</p>
-            <div class="friends-grid">
-                <div class="friend-card" onclick="viewProfile('shakespeare')">
-                    <div class="friend-avatar">
-                        <img src="./assets/shakespeare.png" alt="">
-                    </div>
-                    <div class="friend-name">William Shakespeare</div>
+            <p style="color: #65676b; font-size: 15px; margin-bottom: 12px;">Mutual Friends</p>
+            <div class="friends-grid" id="sidebarFriendsGrid">
                 </div>
-                <div class="friend-card" onclick="viewProfile('horatio')">
-                    <div class="friend-avatar">👨</div>
-                    <div class="friend-name">Horatio</div>
-                </div>
-                <div class="friend-card" onclick="viewProfile('ophelia')">
-                    <div class="friend-avatar">👸</div>
-                    <div class="friend-name">Ophelia</div>
-                </div>
-                <div class="friend-card" onclick="viewProfile('gertrude')">
-                    <div class="friend-avatar">👑</div>
-                    <div class="friend-name">Queen Gertrude</div>
-                </div>
-                <div class="friend-card" onclick="viewProfile('claudius')">
-                    <div class="friend-avatar">👨‍👦</div>
-                    <div class="friend-name">King Claudius</div>
-                </div>
-                <div class="friend-card" onclick="viewProfile('laertes')">
-                    <div class="friend-avatar">⚔️</div>
-                    <div class="friend-name">Laertes</div>
-                </div>
-                <div class="friend-card" onclick="viewProfile('polonius')">
-                    <div class="friend-avatar">👴</div>
-                    <div class="friend-name">Polonius</div>
-                </div>
-                <div class="friend-card" onclick="viewProfile('ghost')">
-                    <div class="friend-avatar">👻</div>
-                    <div class="friend-name">The Ghost</div>
-                </div>
-            </div>
         </div>
     </div>
 
-    <!-- POSTS TAB -->
     <div class="posts-area" id="postsTab">
-        <!-- Post 1: Overview -->
-        <div class="post-card">
-            <div class="post-header">
-                <div class="post-avatar">🎭</div>
-                <div class="post-info">
-                    <h3>Hamlet, Prince of Denmark</h3>
-                    <div class="post-time">One of Shakespeare's greatest tragedies</div>
-                </div>
-            </div>
-            <div class="post-content">
-                <p><i>Hamlet</i> is one of William Shakespeare's most influential and widely studied tragedies. It explores revenge, moral corruption, madness, mortality, and humanity's search for truth. Its psychological depth, memorable characters, and poetic language have made it a landmark of English literature and a timeless subject of analysis.</p>
-                
-                <h3>Key Themes</h3>
-                <div class="themes-grid">
-                    <div class="theme-tag">⚔️ Revenge & Justice</div>
-                    <div class="theme-tag">🤯 Madness</div>
-                    <div class="theme-tag">⚖️ Morality & Corruption</div>
-                    <div class="theme-tag">🤔 Existential Questions</div>
-                </div>
-            </div>
         </div>
 
-        <!-- Post 2: The Story -->
-        <div class="post-card">
-            <div class="post-header">
-                <div class="post-avatar">🎭</div>
-                <div class="post-info">
-                    <h3>Hamlet, Prince of Denmark</h3>
-                    <div class="post-time">The Story</div>
-                </div>
-            </div>
-            <div class="post-content">
-                <p><i>Hamlet</i> tells the story of Prince Hamlet of Denmark, who seeks to avenge the murder of his father. After his mother, Queen Gertrude, marries his uncle Claudius—now the king—Hamlet is thrust into a battle between duty, morality, and deep self-reflection. As he uncovers the truth behind the king's death, he wrestles with profound questions about life, death, justice, and human nature.</p>
-            </div>
-        </div>
-
-        <!-- Post 3: Context -->
-        <div class="post-card">
-            <div class="post-header">
-                <div class="post-avatar">🎭</div>
-                <div class="post-info">
-                    <h3>Hamlet, Prince of Denmark</h3>
-                    <div class="post-time">Historical Context</div>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>Written during the reign of Queen Elizabeth I, the play reflects an era marked by political uncertainty and questions of royal succession.</p>
-                <p><strong>The play explored themes relevant to its time:</strong></p>
-                <p>• Fear of espionage and betrayal<br>
-                • Concerns over unstable monarchies<br>
-                • Corruption and political tension</p>
-            </div>
-        </div>
-
-        <!-- Post 4: Inspiration -->
-        <div class="post-card">
-            <div class="post-header">
-                <div class="post-avatar">🎭</div>
-                <div class="post-info">
-                    <h3>Hamlet, Prince of Denmark</h3>
-                    <div class="post-time">Origins & Inspiration</div>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>Inspired by the legend of <strong>Amleth</strong> from Gesta Danorum (12th century) by Saxo Grammaticus.</p>
-                <p><strong>Shakespeare transformed the tale by:</strong></p>
-                <p>• Adding political intrigue<br>
-                • Exploring psychological depth<br>
-                • Turning a revenge story into a universal tragedy</p>
-            </div>
-        </div>
-
-        <!-- Post 5: Romantic Elements -->
-        <div class="post-card">
-            <div class="post-header">
-                <div class="post-avatar">🎭</div>
-                <div class="post-info">
-                    <h3>Hamlet, Prince of Denmark</h3>
-                    <div class="post-time">Why Hamlet is Romantic Literature</div>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>• <strong>Emotion and Passion</strong> – Hamlet's deep emotional struggles reflect Romantic values<br>
-                • <strong>Individualism</strong> – The play centers on the inner life of Hamlet<br>
-                • <strong>Supernatural Elements</strong> – The Ghost introduces mystery and spirituality<br>
-                • <strong>Existential Questioning</strong> – "To be or not to be" reflects Romantic themes<br>
-                • <strong>Critique of Authority</strong> – Challenges corruption and power</p>
-            </div>
-        </div>
-
-        <!-- Post 6: About William Shakespeare -->
-        <div class="post-card">
-            <div class="post-header">
-                <div class="post-avatar">✍️</div>
-                <div class="post-info">
-                    <h3>About the Author</h3>
-                    <div class="post-time">William Shakespeare (1564-1616)</div>
-                </div>
-            </div>
-            <div class="post-content">
-                <p><strong>William Shakespeare</strong> is considered one of the greatest writers in the English language. A playwright, poet, and actor, he wrote 38 plays and 154 sonnets that explore universal human experiences. His works—including <i>Romeo and Juliet</i>, <i>Macbeth</i>, <i>Othello</i>, and <i>Hamlet</i>—continue to influence global literature and culture.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- ABOUT TAB -->
     <div class="posts-area hidden" id="aboutTab">
         <div class="about-section">
-            <h2>Overview</h2>
-            <p><i>Hamlet</i> is one of William Shakespeare's most influential and widely studied tragedies. It explores revenge, moral corruption, madness, mortality, and humanity's search for truth. Its psychological depth, memorable characters, and poetic language have made it a landmark of English literature and a timeless subject of analysis.</p>
-        </div>
-
-        <div class="about-section">
-            <h2>The Story</h2>
-            <p><i>Hamlet</i> tells the story of Prince Hamlet of Denmark, who seeks to avenge the murder of his father. After his mother, Queen Gertrude, marries his uncle Claudius—now the king—Hamlet is thrust into a battle between duty, morality, and deep self-reflection.</p>
-        </div>
-
-        <div class="about-section">
-            <h2>Historical Context</h2>
-            <p>Written during the reign of Queen Elizabeth I (1599-1601), the play reflects an era marked by political uncertainty and questions of royal succession. The play explored themes relevant to its time including fear of espionage and betrayal, concerns over unstable monarchies, and corruption and political tension.</p>
-        </div>
-
-        <div class="about-section">
-            <h2>Key Themes</h2>
-            <p><strong>Revenge & Justice:</strong> The central plot revolves around Hamlet's quest for vengeance</p>
-            <p><strong>Madness:</strong> Questions whether Hamlet's madness is real or feigned</p>
-            <p><strong>Morality & Corruption:</strong> Explores the corrupt Danish court</p>
-            <p><strong>Existential Questions:</strong> Famous "To be or not to be" soliloquy</p>
-        </div>
-
-        <div class="about-section">
-            <h2>Inspiration</h2>
-            <p>Inspired by the legend of <strong>Amleth</strong> from Gesta Danorum (12th century) by Saxo Grammaticus. Shakespeare transformed the tale by adding political intrigue, exploring psychological depth, and turning a revenge story into a universal tragedy.</p>
+            <h2>About the Character</h2>
+            <div id="aboutTabContent">
+                See posts for timeline and fate.
+            </div>
         </div>
     </div>
 
-    <!-- FRIENDS TAB -->
     <div class="posts-area hidden" id="friendsTab">
-        <div class="friends-page-grid">
-            <div class="friend-page-card" onclick="viewProfile('shakespeare')">
-                <div class="friend-page-avatar">
-                    <img src="./assets/shakespeare.png" alt="">
-                </div>
-                <div class="friend-page-info">
-                    <h3 class="friend-page-name">William Shakespeare</h3>
-                    <p class="friend-page-role">Author & Playwright (1564-1616)</p>
-                </div>
+        <div class="friends-page-grid" id="mainFriendsGrid">
             </div>
-
-            <div class="friend-page-card" onclick="viewProfile('horatio')">
-                <div class="friend-page-avatar">👨</div>
-                <div class="friend-page-info">
-                    <h3 class="friend-page-name">Horatio</h3>
-                    <p class="friend-page-role">Hamlet's Loyal Friend</p>
-                </div>
-            </div>
-
-            <div class="friend-page-card" onclick="viewProfile('ophelia')">
-                <div class="friend-page-avatar">👸</div>
-                <div class="friend-page-info">
-                    <h3 class="friend-page-name">Ophelia</h3>
-                    <p class="friend-page-role">Daughter of Polonius</p>
-                </div>
-            </div>
-
-            <div class="friend-page-card" onclick="viewProfile('gertrude')">
-                <div class="friend-page-avatar">👑</div>
-                <div class="friend-page-info">
-                    <h3 class="friend-page-name">Queen Gertrude</h3>
-                    <p class="friend-page-role">Queen of Denmark / Hamlet's Mother</p>
-                </div>
-            </div>
-
-            <div class="friend-page-card" onclick="viewProfile('claudius')">
-                <div class="friend-page-avatar">👨‍👦</div>
-                <div class="friend-page-info">
-                    <h3 class="friend-page-name">King Claudius</h3>
-                    <p class="friend-page-role">Current King / Hamlet's Uncle</p>
-                </div>
-            </div>
-
-            <div class="friend-page-card" onclick="viewProfile('laertes')">
-                <div class="friend-page-avatar">⚔️</div>
-                <div class="friend-page-info">
-                    <h3 class="friend-page-name">Laertes</h3>
-                    <p class="friend-page-role">Son of Polonius</p>
-                </div>
-            </div>
-
-            <div class="friend-page-card" onclick="viewProfile('polonius')">
-                <div class="friend-page-avatar">👴</div>
-                <div class="friend-page-info">
-                    <h3 class="friend-page-name">Polonius</h3>
-                    <p class="friend-page-role">Counselor to the King</p>
-                </div>
-            </div>
-
-            <div class="friend-page-card" onclick="viewProfile('ghost')">
-                <div class="friend-page-avatar">👻</div>
-                <div class="friend-page-info">
-                    <h3 class="friend-page-name">The Ghost</h3>
-                    <p class="friend-page-role">Spirit of King Hamlet</p>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
 <script>
+// Data Store
 const profiles = {
     hamlet: {
         name: 'Hamlet, Prince of Denmark',
         bio: 'To be, or not to be—that is the question',
         location: '🏰 Lives in Elsinore Castle • 👑 Prince of Denmark',
         image: './assets/hamlet.png',
+        cover: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80', // Kronborg Castle (Elsinore)
+        emoji: '🎭',
         intro: `
-            <div class="info-item">
-                <span class="info-icon">🎭</span>
-                <span>Studied at University of Wittenberg</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">🏰</span>
-                <span>Lives in Elsinore, Denmark</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">👑</span>
-                <span>Prince of Denmark</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">💔</span>
-                <span>It's complicated</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">✍️</span>
-                <span>Written by William Shakespeare (1599-1601)</span>
-            </div>
-        `
+            <div class="info-item"><span class="info-icon">🎭</span><span>Studied at University of Wittenberg</span></div>
+            <div class="info-item"><span class="info-icon">🏰</span><span>Lives in Elsinore, Denmark</span></div>
+            <div class="info-item"><span class="info-icon">👑</span><span>Prince of Denmark</span></div>
+            <div class="info-item"><span class="info-icon">💔</span><span>It's complicated</span></div>
+            <div class="info-item"><span class="info-icon">✍️</span><span>Written by William Shakespeare</span></div>
+        `,
+        posts: [
+            {
+                title: "One of Shakespeare's greatest tragedies",
+                content: `<p><i>Hamlet</i> is one of William Shakespeare's most influential and widely studied tragedies. It explores revenge, moral corruption, madness, mortality, and humanity's search for truth.</p><h3>Key Themes</h3><div class="themes-grid"><div class="theme-tag">⚔️ Revenge & Justice</div><div class="theme-tag">🤯 Madness</div><div class="theme-tag">⚖️ Morality & Corruption</div><div class="theme-tag">🤔 Existential Questions</div></div>`
+            },
+            {
+                title: "The Story",
+                content: "<p><i>Hamlet</i> tells the story of Prince Hamlet of Denmark, who seeks to avenge the murder of his father. After his mother, Queen Gertrude, marries his uncle Claudius—now the king—Hamlet is thrust into a battle between duty, morality, and deep self-reflection.</p>"
+            },
+            {
+                title: "Historical Context",
+                content: "<p>Written during the reign of Queen Elizabeth I, the play reflects an era marked by political uncertainty. It explores fear of espionage, unstable monarchies, and corruption.</p>"
+            }
+        ]
     },
     shakespeare: {
         name: 'William Shakespeare',
         bio: 'Playwright, Poet & Actor',
-        location: '✍️ Stratford-upon-Avon, England • 🎭 The Globe Theatre',
-        image: './assets/shakespeare.png',
+        location: '✍️ Stratford-upon-Avon, England',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Shakespeare.jpg/375px-Shakespeare.jpg',
+        cover: 'https://images.unsplash.com/photo-1460518451285-97b6aa326961?auto=format&fit=crop&w=1200&q=80', // The Globe Theatre
+        emoji: '✍️',
         intro: `
-            <div class="info-item">
-                <span class="info-icon">📅</span>
-                <span>Born April 26, 1564</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">✍️</span>
-                <span>Wrote 38 plays and 154 sonnets</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">🎭</span>
-                <span>Greatest writer in English language</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">🏛️</span>
-                <span>Works performed at The Globe Theatre</span>
-            </div>
-        `
+            <div class="info-item"><span class="info-icon">📅</span><span>Born April 26, 1564</span></div>
+            <div class="info-item"><span class="info-icon">✍️</span><span>Wrote 38 plays and 154 sonnets</span></div>
+        `,
+        posts: [
+            {
+                title: "My Role",
+                content: "I am the creator of this world. I penned the tragedy of Hamlet around 1600, pouring into it the anxieties of the Elizabethan era and the timeless struggles of the human condition."
+            },
+            {
+                title: "Description",
+                content: "Often called the 'Bard of Avon', I was an actor and playwright for the Lord Chamberlain's Men. I wrote comedies, histories, and tragedies, but Hamlet remains my longest play."
+            },
+            {
+                title: "What happened to me?",
+                content: "I retired to Stratford some years before my death in 1616. Though I died over 400 years ago, my words live on in every performance of this play. My fate is immortality through art."
+            }
+        ]
     },
     horatio: {
         name: 'Horatio',
         bio: 'Scholar and Loyal Friend',
-        location: '🎓 University of Wittenberg • 🏰 Elsinore Castle',
-        image: null,
+        location: '🎓 University of Wittenberg',
+        image: './assets/horatio.jpeg',
+        cover: 'https://images.unsplash.com/photo-1507842217121-9e8712e0f9f1?auto=format&fit=crop&w=1200&q=80', // Old Library
         emoji: '👨',
         intro: `
-            <div class="info-item">
-                <span class="info-icon">🤝</span>
-                <span>Hamlet's most trusted friend</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">🎓</span>
-                <span>Scholar from Wittenberg</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">⚖️</span>
-                <span>Rational and level-headed</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">📜</span>
-                <span>Witnesses the Ghost with Hamlet</span>
-            </div>
-        `
+            <div class="info-item"><span class="info-icon">🤝</span><span>Hamlet's best friend</span></div>
+            <div class="info-item"><span class="info-icon">🎓</span><span>Scholar from Wittenberg</span></div>
+        `,
+        posts: [
+            {
+                title: "My Role",
+                content: "I am Hamlet's trusted confidant and the voice of reason. I am the only person Hamlet truly trusts, and I serve as a witness to the supernatural events and the tragedy that unfolds."
+            },
+            {
+                title: "Description",
+                content: "I am a scholar from Wittenberg, rational and skeptical, yet loyal to the end. I am not swayed by passion like Hamlet, but I stand by him through his madness."
+            },
+            {
+                title: "What happened to me?",
+                content: "I attempted to drink the poison cup to die with Hamlet, but he stopped me. My fate is to live on and tell his story to the world, clearing his wounded name."
+            }
+        ]
     },
     ophelia: {
         name: 'Ophelia',
         bio: 'Daughter of Polonius',
-        location: '🏰 Elsinore Castle • 🌸 Court of Denmark',
-        image: null,
+        location: '🏰 Elsinore Castle',
+        image: './assets/ophelia.jpeg',
+        cover: 'https://images.unsplash.com/photo-1504716328655-6d2134cf9f80?auto=format&fit=crop&w=1200&q=80', // Water Lilies
         emoji: '👸',
         intro: `
-            <div class="info-item">
-                <span class="info-icon">💔</span>
-                <span>In a relationship with Hamlet (complicated)</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">👨‍👧</span>
-                <span>Daughter of Polonius</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">🎭</span>
-                <span>Tragic figure of the play</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">🌸</span>
-                <span>Symbol of innocence and madness</span>
-            </div>
-        `
+            <div class="info-item"><span class="info-icon">💔</span><span>It's Complicated with Hamlet</span></div>
+            <div class="info-item"><span class="info-icon">👨‍👧</span><span>Daughter of Polonius</span></div>
+        `,
+        posts: [
+            {
+                title: "Just now",
+                content: "GUYS!!! 😱 I cannot believe it! Taylor Swift literally mentioned me in <i>The Tortured Poets Department</i>! 🤍🎵 Finally someone understands the aesthetic of tragic romance and water imagery! 🌊💐 #TTPD #ButDaddyILoveHim #Swiftie"
+            },
+            {
+                title: "My Role",
+                content: "I am the daughter of Polonius and the potential wife of Hamlet. I am a pawn in the political games of the men around me—my father, brother, and lover."
+            },
+            {
+                title: "Description",
+                content: "I am young, innocent, and obedient. However, the murder of my father by the man I loved (Hamlet) shattered my mind. I handed out flowers representing the court's corruption in my madness."
+            },
+            {
+                title: "What happened to me?",
+                content: "Overcome with grief and madness, I fell into a brook while gathering flowers. My clothes, heavy with water, pulled me down to a muddy death. It was a tragic drowning."
+            }
+        ]
     },
     gertrude: {
         name: 'Queen Gertrude',
         bio: 'Queen of Denmark',
-        location: '👑 Elsinore Castle • 🏰 Royal Court',
-        image: null,
+        location: '👑 Elsinore Castle',
+        image: './assets/queengertrude.jpeg',
+        cover: 'https://images.unsplash.com/photo-1555547631-419b6710b271?auto=format&fit=crop&w=1200&q=80', // Classical Painting vibe
         emoji: '👑',
         intro: `
-            <div class="info-item">
-                <span class="info-icon">👑</span>
-                <span>Queen of Denmark</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">👨‍👦</span>
-                <span>Mother of Hamlet</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">💍</span>
-                <span>Married to King Claudius</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">⚖️</span>
-                <span>Caught between husband and son</span>
-            </div>
-        `
+            <div class="info-item"><span class="info-icon">👑</span><span>Queen of Denmark</span></div>
+            <div class="info-item"><span class="info-icon">👨‍👦</span><span>Mother of Hamlet</span></div>
+        `,
+        posts: [
+            {
+                title: "My Role",
+                content: "I am the Queen of Denmark and Hamlet's mother. My hasty marriage to Claudius sparked Hamlet's rage and suspicion."
+            },
+            {
+                title: "Description",
+                content: "I love my son, but I am also dependent on my status and my husband. I am often interpreted as either complicit or naively unaware of the murder of my first husband."
+            },
+            {
+                title: "What happened to me?",
+                content: "I accidentally drank from the poisoned cup intended for Hamlet during the duel. I died warning my son that the drink was poisoned."
+            }
+        ]
     },
     claudius: {
         name: 'King Claudius',
         bio: 'King of Denmark',
-        location: '👑 Elsinore Castle • 🏰 Royal Throne',
-        image: null,
+        location: '👑 Elsinore Castle',
+        image: './assets/kingclaudius.jpeg',
+        cover: 'https://images.unsplash.com/photo-1562575214-da9fcf59b974?auto=format&fit=crop&w=1200&q=80', // Danish Royal Portrait
         emoji: '👨‍👦',
         intro: `
-            <div class="info-item">
-                <span class="info-icon">👑</span>
-                <span>Current King of Denmark</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">⚔️</span>
-                <span>Brother of the late King Hamlet</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">💍</span>
-                <span>Married Queen Gertrude</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">🎭</span>
-                <span>The play's antagonist</span>
-            </div>
-        `
+            <div class="info-item"><span class="info-icon">👑</span><span>King of Denmark</span></div>
+            <div class="info-item"><span class="info-icon">⚔️</span><span>Antagonist</span></div>
+        `,
+        posts: [
+            {
+                title: "My Role",
+                content: "I am the villain of the story. I murdered my brother to take his crown and his wife. I am a manipulator who uses others to protect my stolen power."
+            },
+            {
+                title: "Description",
+                content: "I am a smooth politician and a guilt-ridden murderer. I try to pray for forgiveness, but I cannot give up the rewards of my sin: my crown and my queen."
+            },
+            {
+                title: "What happened to me?",
+                content: "My plots failed. Hamlet forced me to drink my own poisoned wine and stabbed me with the poisoned blade. I died by my own treachery."
+            }
+        ]
     },
     laertes: {
         name: 'Laertes',
         bio: 'Son of Polonius',
-        location: '🇫🇷 Paris • 🏰 Elsinore Castle',
-        image: null,
+        location: '🇫🇷 Paris / 🇩🇰 Denmark',
+        image: './assets/laertes.jpeg',
+        cover: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80', // Paris
         emoji: '⚔️',
         intro: `
-            <div class="info-item">
-                <span class="info-icon">⚔️</span>
-                <span>Skilled swordsman</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">👨‍👧</span>
-                <span>Son of Polonius, brother of Ophelia</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">🇫🇷</span>
-                <span>Lives in Paris</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">⚡</span>
-                <span>Hot-tempered and impulsive</span>
-            </div>
-        `
+            <div class="info-item"><span class="info-icon">⚔️</span><span>Skilled Swordsman</span></div>
+            <div class="info-item"><span class="info-icon">👨‍👧</span><span>Brother of Ophelia</span></div>
+        `,
+        posts: [
+            {
+                title: "My Role",
+                content: "I am a foil to Hamlet. While Hamlet hesitates to take revenge, I rush into it immediately after my father Polonius is killed."
+            },
+            {
+                title: "Description",
+                content: "I am fiery, impulsive, and honorable in my own way, though easily manipulated by Claudius into cheating during the duel."
+            },
+            {
+                title: "What happened to me?",
+                content: "In my thirst for revenge, I used a poisoned blade. In the scuffle, Hamlet and I exchanged swords, and I was cut by my own weapon. I died after forgiving Hamlet."
+            }
+        ]
     },
     polonius: {
         name: 'Polonius',
         bio: 'Lord Chamberlain',
-        location: '🏰 Elsinore Castle • 👔 Royal Court',
-        image: null,
+        location: '🏰 Elsinore Castle',
+        image: './assets/polonius.jpeg',
+        cover: 'https://images.unsplash.com/photo-1528459584353-5297db1a9c01?auto=format&fit=crop&w=1200&q=80', // Tapestry (The Arras)
         emoji: '👴',
         intro: `
-            <div class="info-item">
-                <span class="info-icon">👔</span>
-                <span>Chief counselor to King Claudius</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">👨‍👧‍👦</span>
-                <span>Father of Ophelia and Laertes</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">🎭</span>
-                <span>Known for long-winded speeches</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">🕵️</span>
-                <span>Often spies on others</span>
-            </div>
-        `
+            <div class="info-item"><span class="info-icon">👔</span><span>Advisor to the King</span></div>
+            <div class="info-item"><span class="info-icon">🕵️</span><span>Professional Spy</span></div>
+        `,
+        posts: [
+            {
+                title: "My Role",
+                content: "I am the Lord Chamberlain and father to Ophelia and Laertes. I am a busybody who thinks I am wiser than I am."
+            },
+            {
+                title: "Description",
+                content: "I am known for being pompous and giving long-winded advice ('To thine own self be true'). I love to spy on people to gain favor with the King."
+            },
+            {
+                title: "What happened to me?",
+                content: "I was hiding behind a tapestry (arras) to spy on Hamlet and his mother. Hamlet thought I was the King and stabbed through the fabric, killing me instantly."
+            }
+        ]
     },
     ghost: {
         name: 'The Ghost',
         bio: 'Spirit of King Hamlet',
-        location: '👻 The Afterlife • 🏰 Battlements of Elsinore',
-        image: null,
+        location: '👻 The Afterlife',
+        image: './assets/ghost.jpeg',
+        cover: 'https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=80', // Spooky Gothic Art
         emoji: '👻',
         intro: `
-            <div class="info-item">
-                <span class="info-icon">👻</span>
-                <span>Spirit of the late King Hamlet</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">⚰️</span>
-                <span>Murdered by his brother Claudius</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">⚔️</span>
-                <span>Demands revenge from his son</span>
-            </div>
-            <div class="info-item">
-                <span class="info-icon">🌙</span>
-                <span>Appears on the castle battlements</span>
-            </div>
-        `
+            <div class="info-item"><span class="info-icon">👻</span><span>Spirit of the King</span></div>
+            <div class="info-item"><span class="info-icon">⚔️</span><span>Seeking Revenge</span></div>
+        `,
+        posts: [
+            {
+                title: "My Role",
+                content: "I am the catalyst of the play. I appear to my son Hamlet to reveal the truth of my murder and demand he take vengeance upon Claudius."
+            },
+            {
+                title: "Description",
+                content: "I am the spirit of the true King, doomed to walk the night and burn in fire during the day until my crimes are purged. I was poisoned in my orchard while I slept."
+            },
+            {
+                title: "What happened to me?",
+                content: "I was murdered by my own brother, Claudius, who poured poison in my ear. My death triggered the tragedy that destroyed the entire Danish court."
+            }
+        ]
     }
 };
 
@@ -998,6 +782,81 @@ function switchTab(tab) {
     }
 }
 
+function renderFriends(profileId) {
+    const friendsKeys = Object.keys(profiles).filter(k => k !== profileId);
+    
+    // Constraint: Hamlet must appear as a friend of every character profile.
+    // If we are NOT viewing Hamlet, ensure Hamlet is in the list, preferably first.
+    if (profileId !== 'hamlet') {
+        // Sort so hamlet is first
+        friendsKeys.sort((a, b) => {
+            if (a === 'hamlet') return -1;
+            if (b === 'hamlet') return 1;
+            return 0;
+        });
+    }
+
+    let sidebarHTML = '';
+    let mainTabHTML = '';
+
+    friendsKeys.forEach(key => {
+        const friend = profiles[key];
+        // Ensure image is valid, fall back to emoji if somehow missing (though all are filled now)
+        const imgHTML = friend.image 
+            ? `<img src="${friend.image}" alt="${friend.name}">` 
+            : `<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:30px;">${friend.emoji}</div>`;
+
+        // Sidebar card
+        sidebarHTML += `
+            <div class="friend-card" onclick="viewProfile('${key}')">
+                <div class="friend-avatar">${imgHTML}</div>
+                <div class="friend-name">${friend.name.split(',')[0]}</div>
+            </div>
+        `;
+
+        // Main tab card
+        mainTabHTML += `
+            <div class="friend-page-card" onclick="viewProfile('${key}')">
+                <div class="friend-page-avatar">${imgHTML}</div>
+                <div class="friend-page-info">
+                    <h3 class="friend-page-name">${friend.name}</h3>
+                    <p class="friend-page-role">${friend.bio}</p>
+                </div>
+            </div>
+        `;
+    });
+
+    document.getElementById('sidebarFriendsGrid').innerHTML = sidebarHTML;
+    document.getElementById('mainFriendsGrid').innerHTML = mainTabHTML;
+}
+
+function renderPosts(profileData) {
+    const postsContainer = document.getElementById('postsTab');
+    postsContainer.innerHTML = ''; // Clear existing
+
+    profileData.posts.forEach(post => {
+        // Determine Avatar for post
+        const imgHTML = profileData.image 
+            ? `<img src="${profileData.image}" alt="${profileData.name}">` 
+            : `<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:20px;">${profileData.emoji}</div>`;
+
+        const html = `
+        <div class="post-card">
+            <div class="post-header">
+                <div class="post-avatar">${imgHTML}</div>
+                <div class="post-info">
+                    <h3>${profileData.name}</h3>
+                    <div class="post-time">${post.title}</div>
+                </div>
+            </div>
+            <div class="post-content">
+                ${post.content}
+            </div>
+        </div>`;
+        postsContainer.innerHTML += html;
+    });
+}
+
 function viewProfile(profileId) {
     currentProfile = profileId;
     const profile = profiles[profileId];
@@ -1012,11 +871,27 @@ function viewProfile(profileId) {
     if (profile.image) {
         profilePicContainer.innerHTML = `<img id="mainProfilePic" src="${profile.image}" alt="${profile.name}">`;
     } else {
-        profilePicContainer.innerHTML = `<div style="font-size: 60px; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">${profile.emoji}</div>`;
+        profilePicContainer.innerHTML = `<div>${profile.emoji}</div>`;
+    }
+
+    // UPDATE COVER PHOTO
+    const coverDiv = document.querySelector('.cover-photo');
+    if (profile.cover) {
+        coverDiv.style.backgroundImage = `url('${profile.cover}')`;
+    } else {
+        // Fallback gradient
+        coverDiv.style.backgroundImage = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
     }
     
     // Update intro content
     document.getElementById('introContent').innerHTML = profile.intro;
+    
+    // Update About Tab Content (Simple text dump of intro for now)
+    document.getElementById('aboutTabContent').innerHTML = profile.intro;
+
+    // RENDER DYNAMIC CONTENT
+    renderFriends(profileId);
+    renderPosts(profile);
     
     // Switch to posts tab
     switchTab('posts');
@@ -1028,12 +903,15 @@ function viewProfile(profileId) {
 function goToHamlet() {
     viewProfile('hamlet');
 }
+
+// Initial Load
+window.onload = function() {
+    viewProfile('hamlet');
+};
 </script>
 
-<!-- Footer -->
-    <footer style="padding: 1rem; padding-top: 2rem; display:flex; flex-direction: column; align-items: center; justify-content: center;">
+<footer style="padding: 1rem; padding-top: 2rem; display:flex; flex-direction: column; align-items: center; justify-content: center;">
         <h3 style="margin: 0;">© All Rights Reserved</h3>
-
         <p>Bagato, Bas, Inocencio</p>
     </footer>
 
