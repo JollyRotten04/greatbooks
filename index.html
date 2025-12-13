@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamlet - Profile</title>
+<style>
+    :root {
+        --fb-blue: #1877f2;
+        --fb-bg: #f0f2f5;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+        background: var(--fb-bg);
+    }
+
+    /* FACEBOOK-STYLE NAVBAR */
+    nav {
+        background: #fff;
+        padding: 8px 16px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        border-bottom: 1px solid #e4e6eb;
+    }
+    
+    nav .nav-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    nav .logo {
+        font-size: 28px;
+        font-weight: bold;
+        color: var(--fb-blue);
+        font-family: cursive;
+        cursor: pointer;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+    }
+    
+    nav a {
+        color: #65676b;
+        text-decoration: none;
+        font-size: 15px;
+        padding: 8px 12px;
+        border-radius: 8px;
+        transition: background 0.2s;
+        font-weight: 500;
+    }
+    
+    nav a:hover {
+        background: #f0f2f5;
+    }
+
+    /* PROFILE HEADER */
+    .profile-header {
+        background: #fff;
+        margin-top: 56px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .cover-photo {
+        width: 100%;
+        height: 350px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        position: relative;
+    }
+
+    .profile-info {
+        max-width: 940px;
+        margin: 0 auto;
+        padding: 0 16px;
+        position: relative;
+    }
+
+    .profile-picture {
+        width: 168px;
+        height: 168px;
+        border-radius: 50%;
+        border: 4px solid #fff;
+        position: absolute;
+        bottom: -24px;
+        left: 16px;
+        background: #e4e6eb;
+        overflow: hidden;
+    }
+
+    .profile-picture img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .profile-details {
+        padding-left: 200px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .profile-name {
+        font-size: 32px;
+        font-weight: bold;
+        margin: 0;
+        color: #050505;
+    }
+
+    .profile-bio {
+        color: #65676b;
+        font-size: 15px;
+        margin: 4px 0;
+    }
+
+    .profile-tabs {
+        border-top: 1px solid #e4e6eb;
+        display: flex;
+        gap: 8px;
+        padding-top: 4px;
+        margin-top: 16px;
+    }
+
+    .tab {
+        padding: 16px 16px 12px;
+        color: #65676b;
+        font-weight: 600;
+        cursor: pointer;
+        border-bottom: 3px solid transparent;
+        transition: all 0.2s;
+    }
+
+    .tab:hover {
+        background: #f0f2f5;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .tab.active {
+        color: var(--fb-blue);
+        border-bottom-color: var(--fb-blue);
+    }
+
+    /* MAIN CONTENT AREA */
+    .main-content {
+        max-width: 940px;
+        margin: 16px auto;
+        padding: 0 16px;
+        display: grid;
+        grid-template-columns: 360px 1fr;
+        gap: 16px;
+    }
+
+    /* LEFT SIDEBAR */
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .info-card {
+        background: #fff;
+        border-radius: 8px;
+        padding: 16px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .info-card h2 {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 0 0 16px 0;
+        color: #050505;
+    }
+
+    .info-item {
+        display: flex;
+        align-items: start;
+        gap: 12px;
+        margin-bottom: 12px;
+        font-size: 15px;
+        color: #050505;
+    }
+
+    .info-icon {
+        width: 20px;
+        height: 20px;
+        color: #65676b;
+    }
+
+    /* FRIENDS GRID */
+    .friends-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+
+    .friend-card {
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.2s;
+        border: 1px solid #e4e6eb;
+    }
+
+    .friend-card:hover {
+        transform: translateY(-2px);
+    }
+
+    .friend-avatar {
+        width: 100%;
+        height: 120px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 48px;
+        overflow: hidden;
+    }
+
+    .friend-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .friend-name {
+        padding: 8px;
+        font-weight: 600;
+        font-size: 13px;
+        color: #050505;
+    }
+
+    /* POSTS AREA */
+    .posts-area {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .post-card {
+        background: #fff;
+        border-radius: 8px;
+        padding: 16px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .post-header {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 12px;
+    }
+
+    .post-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+    }
+
+    .post-info h3 {
+        margin: 0;
+        font-size: 15px;
+        font-weight: 600;
+        color: #050505;
+    }
+
+    .post-time {
+        font-size: 13px;
+        color: #65676b;
+    }
+
+    .post-content {
+        font-size: 15px;
+        line-height: 1.5;
+        color: #050505;
+        margin-bottom: 12px;
+    }
+
+    .post-content h3 {
+        font-size: 18px;
+        margin-top: 16px;
+        margin-bottom: 8px;
+    }
+
+    .themes-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-top: 12px;
+    }
+
+    .theme-tag {
+        background: #e7f3ff;
+        color: var(--fb-blue);
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    /* ABOUT TAB */
+    .about-section {
+        background: #fff;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        margin-bottom: 16px;
+    }
+
+    .about-section h2 {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 0 0 16px 0;
+        color: #050505;
+    }
+
+    .about-section p {
+        margin: 12px 0;
+        line-height: 1.6;
+    }
+
+    /* FRIENDS TAB */
+    .friends-page-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .friend-page-card {
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.2s;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .friend-page-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .friend-page-avatar {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 80px;
+        overflow: hidden;
+    }
+
+    .friend-page-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .friend-page-info {
+        padding: 16px;
+    }
+
+    .friend-page-name {
+        font-size: 18px;
+        font-weight: 600;
+        color: #050505;
+        margin: 0 0 8px 0;
+    }
+
+    .friend-page-role {
+        font-size: 14px;
+        color: #65676b;
+        margin: 0;
+    }
+
+    .hidden {
+        display: none !important;
+    }
+
+    @media (max-width: 900px) {
+        .main-content {
+            grid-template-columns: 1fr;
+        }
+        
+        .profile-details {
+            padding-left: 16px;
+            padding-top: 140px;
+        }
+        
+        .profile-picture {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .friends-page-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+</head>
+<body style="position: relative;">
+
+<nav>
+    <div class="nav-content">
+        <div class="logo" onclick="goToHamlet()">Hamlet</div>
+        <ul>
+            <li><a href="#" onclick="event.preventDefault(); switchTab('about')">About</a></li>
+            <li><a href="#" onclick="event.preventDefault(); switchTab('friends')">Friends</a></li>
+            <li><a href="#" onclick="event.preventDefault(); switchTab('posts')">Story</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- PROFILE HEADER -->
+<div class="profile-header">
+    <div class="cover-photo"></div>
+    <div class="profile-info">
+        <div class="profile-picture">
+            <img id="mainProfilePic" src="./assets/hamlet.png" alt="Hamlet">
+        </div>
+        <div class="profile-details">
+            <h1 class="profile-name" id="profileName">Hamlet, Prince of Denmark</h1>
+            <p class="profile-bio" id="profileBio">To be, or not to be—that is the question</p>
+            <p class="profile-bio" id="profileLocation">🏰 Lives in Elsinore Castle • 👑 Prince of Denmark</p>
+            <div class="profile-tabs">
+                <div class="tab active" onclick="switchTab('posts')">Posts</div>
+                <div class="tab" onclick="switchTab('about')">About</div>
+                <div class="tab" onclick="switchTab('friends')">Friends</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+    <!-- LEFT SIDEBAR -->
+    <div class="sidebar">
+        <!-- Intro Card -->
+        <div class="info-card">
+            <h2>Intro</h2>
+            <div id="introContent">
+                <div class="info-item">
+                    <span class="info-icon">🎭</span>
+                    <span>Studied at University of Wittenberg</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🏰</span>
+                    <span>Lives in Elsinore, Denmark</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">👑</span>
+                    <span>Prince of Denmark</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">💔</span>
+                    <span>It's complicated</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">✍️</span>
+                    <span>Written by William Shakespeare (1599-1601)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Friends Card -->
+        <div class="info-card">
+            <h2>Friends</h2>
+            <p style="color: #65676b; font-size: 15px; margin-bottom: 12px;">8 friends</p>
+            <div class="friends-grid">
+                <div class="friend-card" onclick="viewProfile('shakespeare')">
+                    <div class="friend-avatar">
+                        <img src="./assets/shakespeare.png" alt="">
+                    </div>
+                    <div class="friend-name">William Shakespeare</div>
+                </div>
+                <div class="friend-card" onclick="viewProfile('horatio')">
+                    <div class="friend-avatar">👨</div>
+                    <div class="friend-name">Horatio</div>
+                </div>
+                <div class="friend-card" onclick="viewProfile('ophelia')">
+                    <div class="friend-avatar">👸</div>
+                    <div class="friend-name">Ophelia</div>
+                </div>
+                <div class="friend-card" onclick="viewProfile('gertrude')">
+                    <div class="friend-avatar">👑</div>
+                    <div class="friend-name">Queen Gertrude</div>
+                </div>
+                <div class="friend-card" onclick="viewProfile('claudius')">
+                    <div class="friend-avatar">👨‍👦</div>
+                    <div class="friend-name">King Claudius</div>
+                </div>
+                <div class="friend-card" onclick="viewProfile('laertes')">
+                    <div class="friend-avatar">⚔️</div>
+                    <div class="friend-name">Laertes</div>
+                </div>
+                <div class="friend-card" onclick="viewProfile('polonius')">
+                    <div class="friend-avatar">👴</div>
+                    <div class="friend-name">Polonius</div>
+                </div>
+                <div class="friend-card" onclick="viewProfile('ghost')">
+                    <div class="friend-avatar">👻</div>
+                    <div class="friend-name">The Ghost</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- POSTS TAB -->
+    <div class="posts-area" id="postsTab">
+        <!-- Post 1: Overview -->
+        <div class="post-card">
+            <div class="post-header">
+                <div class="post-avatar">🎭</div>
+                <div class="post-info">
+                    <h3>Hamlet, Prince of Denmark</h3>
+                    <div class="post-time">One of Shakespeare's greatest tragedies</div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p><i>Hamlet</i> is one of William Shakespeare's most influential and widely studied tragedies. It explores revenge, moral corruption, madness, mortality, and humanity's search for truth. Its psychological depth, memorable characters, and poetic language have made it a landmark of English literature and a timeless subject of analysis.</p>
+                
+                <h3>Key Themes</h3>
+                <div class="themes-grid">
+                    <div class="theme-tag">⚔️ Revenge & Justice</div>
+                    <div class="theme-tag">🤯 Madness</div>
+                    <div class="theme-tag">⚖️ Morality & Corruption</div>
+                    <div class="theme-tag">🤔 Existential Questions</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Post 2: The Story -->
+        <div class="post-card">
+            <div class="post-header">
+                <div class="post-avatar">🎭</div>
+                <div class="post-info">
+                    <h3>Hamlet, Prince of Denmark</h3>
+                    <div class="post-time">The Story</div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p><i>Hamlet</i> tells the story of Prince Hamlet of Denmark, who seeks to avenge the murder of his father. After his mother, Queen Gertrude, marries his uncle Claudius—now the king—Hamlet is thrust into a battle between duty, morality, and deep self-reflection. As he uncovers the truth behind the king's death, he wrestles with profound questions about life, death, justice, and human nature.</p>
+            </div>
+        </div>
+
+        <!-- Post 3: Context -->
+        <div class="post-card">
+            <div class="post-header">
+                <div class="post-avatar">🎭</div>
+                <div class="post-info">
+                    <h3>Hamlet, Prince of Denmark</h3>
+                    <div class="post-time">Historical Context</div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>Written during the reign of Queen Elizabeth I, the play reflects an era marked by political uncertainty and questions of royal succession.</p>
+                <p><strong>The play explored themes relevant to its time:</strong></p>
+                <p>• Fear of espionage and betrayal<br>
+                • Concerns over unstable monarchies<br>
+                • Corruption and political tension</p>
+            </div>
+        </div>
+
+        <!-- Post 4: Inspiration -->
+        <div class="post-card">
+            <div class="post-header">
+                <div class="post-avatar">🎭</div>
+                <div class="post-info">
+                    <h3>Hamlet, Prince of Denmark</h3>
+                    <div class="post-time">Origins & Inspiration</div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>Inspired by the legend of <strong>Amleth</strong> from Gesta Danorum (12th century) by Saxo Grammaticus.</p>
+                <p><strong>Shakespeare transformed the tale by:</strong></p>
+                <p>• Adding political intrigue<br>
+                • Exploring psychological depth<br>
+                • Turning a revenge story into a universal tragedy</p>
+            </div>
+        </div>
+
+        <!-- Post 5: Romantic Elements -->
+        <div class="post-card">
+            <div class="post-header">
+                <div class="post-avatar">🎭</div>
+                <div class="post-info">
+                    <h3>Hamlet, Prince of Denmark</h3>
+                    <div class="post-time">Why Hamlet is Romantic Literature</div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>• <strong>Emotion and Passion</strong> – Hamlet's deep emotional struggles reflect Romantic values<br>
+                • <strong>Individualism</strong> – The play centers on the inner life of Hamlet<br>
+                • <strong>Supernatural Elements</strong> – The Ghost introduces mystery and spirituality<br>
+                • <strong>Existential Questioning</strong> – "To be or not to be" reflects Romantic themes<br>
+                • <strong>Critique of Authority</strong> – Challenges corruption and power</p>
+            </div>
+        </div>
+
+        <!-- Post 6: About William Shakespeare -->
+        <div class="post-card">
+            <div class="post-header">
+                <div class="post-avatar">✍️</div>
+                <div class="post-info">
+                    <h3>About the Author</h3>
+                    <div class="post-time">William Shakespeare (1564-1616)</div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p><strong>William Shakespeare</strong> is considered one of the greatest writers in the English language. A playwright, poet, and actor, he wrote 38 plays and 154 sonnets that explore universal human experiences. His works—including <i>Romeo and Juliet</i>, <i>Macbeth</i>, <i>Othello</i>, and <i>Hamlet</i>—continue to influence global literature and culture.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT TAB -->
+    <div class="posts-area hidden" id="aboutTab">
+        <div class="about-section">
+            <h2>Overview</h2>
+            <p><i>Hamlet</i> is one of William Shakespeare's most influential and widely studied tragedies. It explores revenge, moral corruption, madness, mortality, and humanity's search for truth. Its psychological depth, memorable characters, and poetic language have made it a landmark of English literature and a timeless subject of analysis.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>The Story</h2>
+            <p><i>Hamlet</i> tells the story of Prince Hamlet of Denmark, who seeks to avenge the murder of his father. After his mother, Queen Gertrude, marries his uncle Claudius—now the king—Hamlet is thrust into a battle between duty, morality, and deep self-reflection.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>Historical Context</h2>
+            <p>Written during the reign of Queen Elizabeth I (1599-1601), the play reflects an era marked by political uncertainty and questions of royal succession. The play explored themes relevant to its time including fear of espionage and betrayal, concerns over unstable monarchies, and corruption and political tension.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>Key Themes</h2>
+            <p><strong>Revenge & Justice:</strong> The central plot revolves around Hamlet's quest for vengeance</p>
+            <p><strong>Madness:</strong> Questions whether Hamlet's madness is real or feigned</p>
+            <p><strong>Morality & Corruption:</strong> Explores the corrupt Danish court</p>
+            <p><strong>Existential Questions:</strong> Famous "To be or not to be" soliloquy</p>
+        </div>
+
+        <div class="about-section">
+            <h2>Inspiration</h2>
+            <p>Inspired by the legend of <strong>Amleth</strong> from Gesta Danorum (12th century) by Saxo Grammaticus. Shakespeare transformed the tale by adding political intrigue, exploring psychological depth, and turning a revenge story into a universal tragedy.</p>
+        </div>
+    </div>
+
+    <!-- FRIENDS TAB -->
+    <div class="posts-area hidden" id="friendsTab">
+        <div class="friends-page-grid">
+            <div class="friend-page-card" onclick="viewProfile('shakespeare')">
+                <div class="friend-page-avatar">
+                    <img src="./assets/shakespeare.png" alt="">
+                </div>
+                <div class="friend-page-info">
+                    <h3 class="friend-page-name">William Shakespeare</h3>
+                    <p class="friend-page-role">Author & Playwright (1564-1616)</p>
+                </div>
+            </div>
+
+            <div class="friend-page-card" onclick="viewProfile('horatio')">
+                <div class="friend-page-avatar">👨</div>
+                <div class="friend-page-info">
+                    <h3 class="friend-page-name">Horatio</h3>
+                    <p class="friend-page-role">Hamlet's Loyal Friend</p>
+                </div>
+            </div>
+
+            <div class="friend-page-card" onclick="viewProfile('ophelia')">
+                <div class="friend-page-avatar">👸</div>
+                <div class="friend-page-info">
+                    <h3 class="friend-page-name">Ophelia</h3>
+                    <p class="friend-page-role">Daughter of Polonius</p>
+                </div>
+            </div>
+
+            <div class="friend-page-card" onclick="viewProfile('gertrude')">
+                <div class="friend-page-avatar">👑</div>
+                <div class="friend-page-info">
+                    <h3 class="friend-page-name">Queen Gertrude</h3>
+                    <p class="friend-page-role">Queen of Denmark / Hamlet's Mother</p>
+                </div>
+            </div>
+
+            <div class="friend-page-card" onclick="viewProfile('claudius')">
+                <div class="friend-page-avatar">👨‍👦</div>
+                <div class="friend-page-info">
+                    <h3 class="friend-page-name">King Claudius</h3>
+                    <p class="friend-page-role">Current King / Hamlet's Uncle</p>
+                </div>
+            </div>
+
+            <div class="friend-page-card" onclick="viewProfile('laertes')">
+                <div class="friend-page-avatar">⚔️</div>
+                <div class="friend-page-info">
+                    <h3 class="friend-page-name">Laertes</h3>
+                    <p class="friend-page-role">Son of Polonius</p>
+                </div>
+            </div>
+
+            <div class="friend-page-card" onclick="viewProfile('polonius')">
+                <div class="friend-page-avatar">👴</div>
+                <div class="friend-page-info">
+                    <h3 class="friend-page-name">Polonius</h3>
+                    <p class="friend-page-role">Counselor to the King</p>
+                </div>
+            </div>
+
+            <div class="friend-page-card" onclick="viewProfile('ghost')">
+                <div class="friend-page-avatar">👻</div>
+                <div class="friend-page-info">
+                    <h3 class="friend-page-name">The Ghost</h3>
+                    <p class="friend-page-role">Spirit of King Hamlet</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+const profiles = {
+    hamlet: {
+        name: 'Hamlet, Prince of Denmark',
+        bio: 'To be, or not to be—that is the question',
+        location: '🏰 Lives in Elsinore Castle • 👑 Prince of Denmark',
+        image: './assets/hamlet.png',
+        intro: `
+            <div class="info-item">
+                <span class="info-icon">🎭</span>
+                <span>Studied at University of Wittenberg</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🏰</span>
+                <span>Lives in Elsinore, Denmark</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">👑</span>
+                <span>Prince of Denmark</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">💔</span>
+                <span>It's complicated</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">✍️</span>
+                <span>Written by William Shakespeare (1599-1601)</span>
+            </div>
+        `
+    },
+    shakespeare: {
+        name: 'William Shakespeare',
+        bio: 'Playwright, Poet & Actor',
+        location: '✍️ Stratford-upon-Avon, England • 🎭 The Globe Theatre',
+        image: './assets/shakespeare.png',
+        intro: `
+            <div class="info-item">
+                <span class="info-icon">📅</span>
+                <span>Born April 26, 1564</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">✍️</span>
+                <span>Wrote 38 plays and 154 sonnets</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🎭</span>
+                <span>Greatest writer in English language</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🏛️</span>
+                <span>Works performed at The Globe Theatre</span>
+            </div>
+        `
+    },
+    horatio: {
+        name: 'Horatio',
+        bio: 'Scholar and Loyal Friend',
+        location: '🎓 University of Wittenberg • 🏰 Elsinore Castle',
+        image: null,
+        emoji: '👨',
+        intro: `
+            <div class="info-item">
+                <span class="info-icon">🤝</span>
+                <span>Hamlet's most trusted friend</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🎓</span>
+                <span>Scholar from Wittenberg</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">⚖️</span>
+                <span>Rational and level-headed</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">📜</span>
+                <span>Witnesses the Ghost with Hamlet</span>
+            </div>
+        `
+    },
+    ophelia: {
+        name: 'Ophelia',
+        bio: 'Daughter of Polonius',
+        location: '🏰 Elsinore Castle • 🌸 Court of Denmark',
+        image: null,
+        emoji: '👸',
+        intro: `
+            <div class="info-item">
+                <span class="info-icon">💔</span>
+                <span>In a relationship with Hamlet (complicated)</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">👨‍👧</span>
+                <span>Daughter of Polonius</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🎭</span>
+                <span>Tragic figure of the play</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🌸</span>
+                <span>Symbol of innocence and madness</span>
+            </div>
+        `
+    },
+    gertrude: {
+        name: 'Queen Gertrude',
+        bio: 'Queen of Denmark',
+        location: '👑 Elsinore Castle • 🏰 Royal Court',
+        image: null,
+        emoji: '👑',
+        intro: `
+            <div class="info-item">
+                <span class="info-icon">👑</span>
+                <span>Queen of Denmark</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">👨‍👦</span>
+                <span>Mother of Hamlet</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">💍</span>
+                <span>Married to King Claudius</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">⚖️</span>
+                <span>Caught between husband and son</span>
+            </div>
+        `
+    },
+    claudius: {
+        name: 'King Claudius',
+        bio: 'King of Denmark',
+        location: '👑 Elsinore Castle • 🏰 Royal Throne',
+        image: null,
+        emoji: '👨‍👦',
+        intro: `
+            <div class="info-item">
+                <span class="info-icon">👑</span>
+                <span>Current King of Denmark</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">⚔️</span>
+                <span>Brother of the late King Hamlet</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">💍</span>
+                <span>Married Queen Gertrude</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🎭</span>
+                <span>The play's antagonist</span>
+            </div>
+        `
+    },
+    laertes: {
+        name: 'Laertes',
+        bio: 'Son of Polonius',
+        location: '🇫🇷 Paris • 🏰 Elsinore Castle',
+        image: null,
+        emoji: '⚔️',
+        intro: `
+            <div class="info-item">
+                <span class="info-icon">⚔️</span>
+                <span>Skilled swordsman</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">👨‍👧</span>
+                <span>Son of Polonius, brother of Ophelia</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🇫🇷</span>
+                <span>Lives in Paris</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">⚡</span>
+                <span>Hot-tempered and impulsive</span>
+            </div>
+        `
+    },
+    polonius: {
+        name: 'Polonius',
+        bio: 'Lord Chamberlain',
+        location: '🏰 Elsinore Castle • 👔 Royal Court',
+        image: null,
+        emoji: '👴',
+        intro: `
+            <div class="info-item">
+                <span class="info-icon">👔</span>
+                <span>Chief counselor to King Claudius</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">👨‍👧‍👦</span>
+                <span>Father of Ophelia and Laertes</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🎭</span>
+                <span>Known for long-winded speeches</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🕵️</span>
+                <span>Often spies on others</span>
+            </div>
+        `
+    },
+    ghost: {
+        name: 'The Ghost',
+        bio: 'Spirit of King Hamlet',
+        location: '👻 The Afterlife • 🏰 Battlements of Elsinore',
+        image: null,
+        emoji: '👻',
+        intro: `
+            <div class="info-item">
+                <span class="info-icon">👻</span>
+                <span>Spirit of the late King Hamlet</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">⚰️</span>
+                <span>Murdered by his brother Claudius</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">⚔️</span>
+                <span>Demands revenge from his son</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🌙</span>
+                <span>Appears on the castle battlements</span>
+            </div>
+        `
+    }
+};
+
+let currentProfile = 'hamlet';
+
+function switchTab(tab) {
+    // Remove active class from all tabs
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(t => t.classList.remove('active'));
+    
+    // Hide all content areas
+    document.getElementById('postsTab').classList.add('hidden');
+    document.getElementById('aboutTab').classList.add('hidden');
+    document.getElementById('friendsTab').classList.add('hidden');
+    
+    // Show selected tab and add active class
+    if (tab === 'posts') {
+        document.getElementById('postsTab').classList.remove('hidden');
+        tabs[0].classList.add('active');
+    } else if (tab === 'about') {
+        document.getElementById('aboutTab').classList.remove('hidden');
+        tabs[1].classList.add('active');
+    } else if (tab === 'friends') {
+        document.getElementById('friendsTab').classList.remove('hidden');
+        tabs[2].classList.add('active');
+    }
+}
+
+function viewProfile(profileId) {
+    currentProfile = profileId;
+    const profile = profiles[profileId];
+    
+    // Update profile header
+    document.getElementById('profileName').textContent = profile.name;
+    document.getElementById('profileBio').textContent = profile.bio;
+    document.getElementById('profileLocation').textContent = profile.location;
+    
+    // Update profile picture
+    const profilePicContainer = document.querySelector('.profile-picture');
+    if (profile.image) {
+        profilePicContainer.innerHTML = `<img id="mainProfilePic" src="${profile.image}" alt="${profile.name}">`;
+    } else {
+        profilePicContainer.innerHTML = `<div style="font-size: 60px; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">${profile.emoji}</div>`;
+    }
+    
+    // Update intro content
+    document.getElementById('introContent').innerHTML = profile.intro;
+    
+    // Switch to posts tab
+    switchTab('posts');
+    
+    // Scroll to top
+    window.scrollTo(0, 0);
+}
+
+function goToHamlet() {
+    viewProfile('hamlet');
+}
+</script>
+
+<!-- Footer -->
+    <footer style="padding: 1rem; padding-top: 2rem; display:flex; flex-direction: column; align-items: center; justify-content: center;">
+        <h3 style="margin: 0;">© All Rights Reserved</h3>
+
+        <p>Bagato, Bas, Inocencio</p>
+    </footer>
+
+</body>
+</html>
