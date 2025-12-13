@@ -106,7 +106,8 @@
         border-radius: 50%;
         border: 4px solid #fff;
         position: absolute;
-        bottom: -24px;
+        /* Aligned to bottom edge */
+        bottom: 24px;
         left: 16px;
         background: #e4e6eb;
         overflow: hidden;
@@ -437,6 +438,7 @@
         .profile-picture {
             left: 50%;
             transform: translateX(-50%);
+            bottom: 0;
         }
 
         .friends-page-grid {
@@ -497,12 +499,8 @@
         </div>
 
     <div class="posts-area hidden" id="aboutTab">
-        <div class="about-section">
-            <h2>About the Character</h2>
-            <div id="aboutTabContent">
-                See posts for timeline and fate.
+        <div id="aboutTabContent">
             </div>
-        </div>
     </div>
 
     <div class="posts-area hidden" id="friendsTab">
@@ -527,6 +525,22 @@ const profiles = {
             <div class="info-item"><span class="info-icon">👑</span><span>Prince of Denmark</span></div>
             <div class="info-item"><span class="info-icon">💔</span><span>It's complicated</span></div>
             <div class="info-item"><span class="info-icon">✍️</span><span>Written by William Shakespeare</span></div>
+        `,
+        about: `
+            <div class="about-section">
+                <h2>Overview</h2>
+                <p><i>Hamlet</i> is one of William Shakespeare's most influential and widely studied tragedies. It explores revenge, moral corruption, madness, mortality, and humanity's search for truth. Its psychological depth, memorable characters, and poetic language have made it a landmark of English literature.</p>
+            </div>
+            <div class="about-section">
+                <h2>The Story</h2>
+                <p>The play tells the story of Prince Hamlet of Denmark, who seeks to avenge the murder of his father. After his mother, Queen Gertrude, marries his uncle Claudius—now the king—Hamlet is thrust into a battle between duty, morality, and deep self-reflection.</p>
+            </div>
+            <div class="about-section">
+                <h2>Key Themes</h2>
+                <p><strong>Revenge & Justice:</strong> The central plot revolves around Hamlet's quest for vengeance.</p>
+                <p><strong>Madness:</strong> Questions whether Hamlet's madness is real or feigned.</p>
+                <p><strong>Morality:</strong> Explores the corruption of the Danish court.</p>
+            </div>
         `,
         posts: [
             {
@@ -554,6 +568,20 @@ const profiles = {
             <div class="info-item"><span class="info-icon">📅</span><span>Born April 26, 1564</span></div>
             <div class="info-item"><span class="info-icon">✍️</span><span>Wrote 38 plays and 154 sonnets</span></div>
         `,
+        about: `
+            <div class="about-section">
+                <h2>My Role</h2>
+                <p>I am the creator of this world. I penned the tragedy of Hamlet around 1600, pouring into it the anxieties of the Elizabethan era and the timeless struggles of the human condition.</p>
+            </div>
+            <div class="about-section">
+                <h2>Description</h2>
+                <p>Often called the 'Bard of Avon', I was an actor and playwright for the Lord Chamberlain's Men. I wrote comedies, histories, and tragedies, but Hamlet remains my longest and most discussed play.</p>
+            </div>
+            <div class="about-section">
+                <h2>Legacy</h2>
+                <p>I retired to Stratford some years before my death in 1616. Though I died over 400 years ago, my words live on in every performance of this play. My fate is immortality through art.</p>
+            </div>
+        `,
         posts: [
             {
                 title: "My Role",
@@ -574,11 +602,25 @@ const profiles = {
         bio: 'Scholar and Loyal Friend',
         location: '🎓 University of Wittenberg',
         image: './assets/horatio.jpeg',
-        cover: 'https://images.unsplash.com/photo-1507842217121-9e8712e0f9f1?auto=format&fit=crop&w=1200&q=80', // Old Library
+        cover: './assets/horatio.jpeg', // Old Library
         emoji: '👨',
         intro: `
             <div class="info-item"><span class="info-icon">🤝</span><span>Hamlet's best friend</span></div>
             <div class="info-item"><span class="info-icon">🎓</span><span>Scholar from Wittenberg</span></div>
+        `,
+        about: `
+            <div class="about-section">
+                <h2>Role in Play</h2>
+                <p>I am Hamlet's trusted confidant and the voice of reason. I am the only person Hamlet truly trusts, and I serve as a witness to the supernatural events and the tragedy that unfolds.</p>
+            </div>
+            <div class="about-section">
+                <h2>Character Description</h2>
+                <p>I am a scholar from Wittenberg, rational and skeptical, yet loyal to the end. Unlike the other characters driven by passion or ambition, I remain level-headed throughout the crisis.</p>
+            </div>
+            <div class="about-section">
+                <h2>Fate</h2>
+                <p>At the end of the play, I attempted to drink the poison cup to die with Hamlet, but he stopped me. My burden is to live on and tell his story to the world, clearing his wounded name.</p>
+            </div>
         `,
         posts: [
             {
@@ -600,11 +642,25 @@ const profiles = {
         bio: 'Daughter of Polonius',
         location: '🏰 Elsinore Castle',
         image: './assets/ophelia.jpeg',
-        cover: 'https://images.unsplash.com/photo-1504716328655-6d2134cf9f80?auto=format&fit=crop&w=1200&q=80', // Water Lilies
+        cover: './assets/ophelia.jpeg', // Water Lilies
         emoji: '👸',
         intro: `
             <div class="info-item"><span class="info-icon">💔</span><span>It's Complicated with Hamlet</span></div>
             <div class="info-item"><span class="info-icon">👨‍👧</span><span>Daughter of Polonius</span></div>
+        `,
+        about: `
+            <div class="about-section">
+                <h2>Role in Play</h2>
+                <p>I am the daughter of Polonius and the potential wife of Hamlet. I am a pawn in the political games of the men around me—my father, brother, and lover.</p>
+            </div>
+            <div class="about-section">
+                <h2>Character Description</h2>
+                <p>I am young, innocent, and obedient. However, the murder of my father by the man I loved (Hamlet) shattered my mind. My madness is depicted through song and the distribution of flowers representing the court's corruption.</p>
+            </div>
+            <div class="about-section">
+                <h2>Fate</h2>
+                <p>Overcome with grief and madness, I fell into a brook while gathering flowers. My clothes, heavy with water, pulled me down to a muddy death. It was a tragic, passive drowning.</p>
+            </div>
         `,
         posts: [
             {
@@ -630,11 +686,25 @@ const profiles = {
         bio: 'Queen of Denmark',
         location: '👑 Elsinore Castle',
         image: './assets/queengertrude.jpeg',
-        cover: 'https://images.unsplash.com/photo-1555547631-419b6710b271?auto=format&fit=crop&w=1200&q=80', // Classical Painting vibe
+        cover: './assets/queengertrude.jpeg', // Classical Painting vibe
         emoji: '👑',
         intro: `
             <div class="info-item"><span class="info-icon">👑</span><span>Queen of Denmark</span></div>
             <div class="info-item"><span class="info-icon">👨‍👦</span><span>Mother of Hamlet</span></div>
+        `,
+        about: `
+            <div class="about-section">
+                <h2>Role in Play</h2>
+                <p>I am the Queen of Denmark and Hamlet's mother. My hasty marriage to Claudius so soon after the King's death sparked Hamlet's rage and suspicion.</p>
+            </div>
+            <div class="about-section">
+                <h2>Character Description</h2>
+                <p>I love my son, but I am also dependent on my status and my husband. Scholars often debate whether I was complicit in the murder of my first husband or simply naively unaware.</p>
+            </div>
+            <div class="about-section">
+                <h2>Fate</h2>
+                <p>I accidentally drank from the poisoned cup intended for Hamlet during the duel between him and Laertes. I died warning my son that the drink was poisoned.</p>
+            </div>
         `,
         posts: [
             {
@@ -656,11 +726,25 @@ const profiles = {
         bio: 'King of Denmark',
         location: '👑 Elsinore Castle',
         image: './assets/kingclaudius.jpeg',
-        cover: 'https://images.unsplash.com/photo-1562575214-da9fcf59b974?auto=format&fit=crop&w=1200&q=80', // Danish Royal Portrait
+        cover: './assets/kingclaudius.jpeg', // Danish Royal Portrait
         emoji: '👨‍👦',
         intro: `
             <div class="info-item"><span class="info-icon">👑</span><span>King of Denmark</span></div>
             <div class="info-item"><span class="info-icon">⚔️</span><span>Antagonist</span></div>
+        `,
+        about: `
+            <div class="about-section">
+                <h2>Role in Play</h2>
+                <p>I am the primary antagonist. I murdered my brother to take his crown and his wife. Throughout the play, I am a manipulator who uses others to protect my stolen power.</p>
+            </div>
+            <div class="about-section">
+                <h2>Character Description</h2>
+                <p>I am a smooth politician and a guilt-ridden murderer. I try to pray for forgiveness, but I realize I cannot be forgiven while I still retain the rewards of my sin: my crown and my queen.</p>
+            </div>
+            <div class="about-section">
+                <h2>Fate</h2>
+                <p>My plots ultimately failed. Hamlet forced me to drink my own poisoned wine and stabbed me with the poisoned blade. I died by my own treachery.</p>
+            </div>
         `,
         posts: [
             {
@@ -682,11 +766,25 @@ const profiles = {
         bio: 'Son of Polonius',
         location: '🇫🇷 Paris / 🇩🇰 Denmark',
         image: './assets/laertes.jpeg',
-        cover: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80', // Paris
+        cover: './assets/laertes.jpeg', // Paris
         emoji: '⚔️',
         intro: `
             <div class="info-item"><span class="info-icon">⚔️</span><span>Skilled Swordsman</span></div>
             <div class="info-item"><span class="info-icon">👨‍👧</span><span>Brother of Ophelia</span></div>
+        `,
+        about: `
+            <div class="about-section">
+                <h2>Role in Play</h2>
+                <p>I am a foil to Hamlet. While Hamlet hesitates to take revenge, I rush into it immediately and violently after my father Polonius is killed.</p>
+            </div>
+            <div class="about-section">
+                <h2>Character Description</h2>
+                <p>I am fiery, impulsive, and honorable in my own way. I care deeply for my sister Ophelia. However, my anger makes me easily manipulated by Claudius into cheating during the duel.</p>
+            </div>
+            <div class="about-section">
+                <h2>Fate</h2>
+                <p>In my thirst for revenge, I used a poisoned blade. In the scuffle, Hamlet and I exchanged swords, and I was cut by my own weapon. I died after confessing the truth and forgiving Hamlet.</p>
+            </div>
         `,
         posts: [
             {
@@ -714,6 +812,20 @@ const profiles = {
             <div class="info-item"><span class="info-icon">👔</span><span>Advisor to the King</span></div>
             <div class="info-item"><span class="info-icon">🕵️</span><span>Professional Spy</span></div>
         `,
+        about: `
+            <div class="about-section">
+                <h2>Role in Play</h2>
+                <p>I am the Lord Chamberlain and father to Ophelia and Laertes. I am a busybody who thinks I am wiser than I am, constantly meddling in the affairs of others.</p>
+            </div>
+            <div class="about-section">
+                <h2>Character Description</h2>
+                <p>I am known for being pompous and giving long-winded advice (such as 'To thine own self be true'). I am sycophantic to the King and willing to use my daughter to spy on Hamlet.</p>
+            </div>
+            <div class="about-section">
+                <h2>Fate</h2>
+                <p>I was hiding behind a tapestry (arras) to spy on Hamlet and his mother. Hamlet, hearing a noise and thinking I was the King, stabbed through the fabric, killing me instantly.</p>
+            </div>
+        `,
         posts: [
             {
                 title: "My Role",
@@ -739,6 +851,20 @@ const profiles = {
         intro: `
             <div class="info-item"><span class="info-icon">👻</span><span>Spirit of the King</span></div>
             <div class="info-item"><span class="info-icon">⚔️</span><span>Seeking Revenge</span></div>
+        `,
+        about: `
+            <div class="about-section">
+                <h2>Role in Play</h2>
+                <p>I am the catalyst of the play. I appear to my son Hamlet to reveal the true nature of my death and demand he take vengeance upon Claudius, setting the tragedy in motion.</p>
+            </div>
+            <div class="about-section">
+                <h2>Character Description</h2>
+                <p>I am the spirit of the true King, doomed to walk the night and burn in fire during the day until my earthly crimes are purged. I appear in full armor, signifying war and unrest.</p>
+            </div>
+            <div class="about-section">
+                <h2>Fate</h2>
+                <p>I was murdered by my own brother, Claudius, who poured hebenon poison in my ear while I slept in my orchard. My death left me with no time to confess my sins.</p>
+            </div>
         `,
         posts: [
             {
@@ -886,8 +1012,8 @@ function viewProfile(profileId) {
     // Update intro content
     document.getElementById('introContent').innerHTML = profile.intro;
     
-    // Update About Tab Content (Simple text dump of intro for now)
-    document.getElementById('aboutTabContent').innerHTML = profile.intro;
+    // Update About Tab Content
+    document.getElementById('aboutTabContent').innerHTML = profile.about;
 
     // RENDER DYNAMIC CONTENT
     renderFriends(profileId);
