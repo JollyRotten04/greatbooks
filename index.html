@@ -328,6 +328,255 @@
         margin-bottom: 8px;
     }
 
+    /* POST REACTIONS */
+    .post-actions {
+        border-top: 1px solid #e4e6eb;
+        padding-top: 8px;
+        margin-top: 12px;
+        display: flex;
+        gap: 4px;
+    }
+
+    .reaction-summary {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 4px 0;
+        margin-bottom: 8px;
+        font-size: 13px;
+        color: #65676b;
+    }
+
+    .reaction-icons {
+        display: flex;
+        gap: 2px;
+    }
+
+    .reaction-icon {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        border: 2px solid #fff;
+        margin-left: -4px;
+    }
+
+    .reaction-icon:first-child {
+        margin-left: 0;
+    }
+
+    .action-btn {
+        flex: 1;
+        padding: 8px;
+        background: none;
+        border: none;
+        color: #65676b;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        transition: background 0.2s;
+        position: relative;
+    }
+
+    .action-btn:hover {
+        background: #f0f2f5;
+    }
+
+    .action-btn.reacted {
+        color: var(--fb-blue);
+    }
+
+    .reaction-picker {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%) scale(0);
+        margin-bottom: 8px;
+        background: #fff;
+        border-radius: 50px;
+        padding: 8px 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        display: flex;
+        gap: 6px;
+        opacity: 0;
+        transition: all 0.2s ease;
+        pointer-events: none;
+        z-index: 10;
+    }
+
+    .action-btn:hover .reaction-picker {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .reaction-option {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    .reaction-option:hover {
+        transform: scale(1.4);
+    }
+
+    .reaction-option.selected {
+        background: #e7f3ff;
+        border-radius: 50%;
+    }
+
+    /* COMMENTS SECTION */
+    .comments-section {
+        margin-top: 12px;
+        border-top: 1px solid #e4e6eb;
+        padding-top: 12px;
+    }
+
+    .comment-input-container {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+
+    .comment-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        flex-shrink: 0;
+    }
+
+    .comment-input-wrapper {
+        flex: 1;
+        position: relative;
+    }
+
+    .comment-input {
+        width: 100%;
+        padding: 8px 12px;
+        border-radius: 18px;
+        border: none;
+        background: #f0f2f5;
+        font-size: 15px;
+        font-family: inherit;
+        resize: none;
+        min-height: 36px;
+        max-height: 100px;
+        overflow-y: auto;
+    }
+
+    .comment-input:focus {
+        outline: none;
+        background: #e4e6eb;
+    }
+
+    .comment-submit {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--fb-blue);
+        color: white;
+        border: none;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        display: none;
+    }
+
+    .comment-input:focus + .comment-submit,
+    .comment-input:not(:placeholder-shown) + .comment-submit {
+        display: block;
+    }
+
+    .comment-submit:hover {
+        background: #166fe5;
+    }
+
+    .comment {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 8px;
+    }
+
+    .comment-content {
+        flex: 1;
+    }
+
+    .comment-bubble {
+        background: #f0f2f5;
+        padding: 8px 12px;
+        border-radius: 18px;
+        display: inline-block;
+        max-width: 100%;
+    }
+
+    .comment-author {
+        font-weight: 600;
+        font-size: 13px;
+        color: #050505;
+        margin-bottom: 2px;
+    }
+
+    .comment-text {
+        font-size: 15px;
+        color: #050505;
+        word-wrap: break-word;
+    }
+
+    .comment-meta {
+        display: flex;
+        gap: 12px;
+        margin-top: 4px;
+        margin-left: 12px;
+        font-size: 12px;
+        color: #65676b;
+    }
+
+    .comment-meta span {
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    .comment-meta span:hover {
+        text-decoration: underline;
+    }
+
+    .view-more-comments {
+        color: #65676b;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-left: 40px;
+        margin-bottom: 8px;
+        display: inline-block;
+    }
+
+    .view-more-comments:hover {
+        text-decoration: underline;
+    }
+
     .themes-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -358,6 +607,13 @@
         font-size: 20px;
         font-weight: bold;
         margin: 0 0 16px 0;
+        color: #050505;
+    }
+
+    .about-section h3 {
+        font-size: 16px;
+        font-weight: bold;
+        margin: 16px 0 8px 0;
         color: #050505;
     }
 
@@ -425,6 +681,7 @@
         display: none !important;
     }
 
+    /* Standard Mobile View */
     @media (max-width: 900px) {
         .main-content {
             grid-template-columns: 1fr;
@@ -432,17 +689,38 @@
         
         .profile-details {
             padding-left: 16px;
-            padding-top: 140px;
+            padding-top: 200px; /* Reduced for overlap */
+            text-align: center; /* Center text on mobile */
         }
         
         .profile-picture {
             left: 50%;
             transform: translateX(-50%);
-            bottom: 0;
+            top: 20px; /* Adjust top overlap */
         }
 
         .friends-page-grid {
             grid-template-columns: 1fr;
+        }
+    }
+
+    /* Landscape / Short Screen Fix */
+    @media (max-height: 500px) and (orientation: landscape) {
+        .cover-photo {
+            height: 200px;
+        }
+        
+        .profile-picture {
+            width: 120px;
+            height: 120px;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .profile-details {
+            padding-top: 60px;
+            text-align: center;
         }
     }
 </style>
@@ -468,7 +746,7 @@
             </div>
         <div class="profile-details">
             <h1 class="profile-name" id="profileName">Hamlet, Prince of Denmark</h1>
-            <p class="profile-bio" id="profileBio">To be, or not to be—that is the question</p>
+            <p class="profile-bio" id="profileBio">To be, or not to be... 💀</p>
             <p class="profile-bio" id="profileLocation">🏰 Lives in Elsinore Castle • 👑 Prince of Denmark</p>
             <div class="profile-tabs">
                 <div class="tab active" onclick="switchTab('posts')">Posts</div>
@@ -511,10 +789,25 @@
 
 <script>
 // Data Store
+const reactions = {
+    like: { emoji: '👍', color: '#1877f2', label: 'Like' },
+    love: { emoji: '❤️', color: '#f33e58', label: 'Love' },
+    haha: { emoji: '😆', color: '#f7b125', label: 'Haha' },
+    wow: { emoji: '😮', color: '#f7b125', label: 'Wow' },
+    sad: { emoji: '😢', color: '#f7b125', label: 'Sad' },
+    angry: { emoji: '😠', color: '#e9710f', label: 'Angry' }
+};
+
+// Store reactions per post (keyed by profileId-postIndex)
+const postReactions = {};
+
+// Store comments per post (keyed by profileId-postIndex)
+const postComments = {};
+
 const profiles = {
     hamlet: {
         name: 'Hamlet, Prince of Denmark',
-        bio: 'To be, or not to be—that is the question',
+        bio: 'To be, or not to be... 💀',
         location: '🏰 Lives in Elsinore Castle • 👑 Prince of Denmark',
         image: './assets/hamlet.png',
         cover: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80', // Kronborg Castle (Elsinore)
@@ -528,32 +821,46 @@ const profiles = {
         `,
         about: `
             <div class="about-section">
-                <h2>Overview</h2>
-                <p><i>Hamlet</i> is one of William Shakespeare's most influential and widely studied tragedies. It explores revenge, moral corruption, madness, mortality, and humanity's search for truth. Its psychological depth, memorable characters, and poetic language have made it a landmark of English literature.</p>
+                <h2>Background & Education</h2>
+                <p>Prince Hamlet is the son of the late King Hamlet and Queen Gertrude. A dedicated intellectual, he spent his formative years studying at the <strong>University of Wittenberg</strong> in Germany, a center of Protestant Reformation thought. This academic background heavily influences his tendency to overthink, question metaphysical truths, and analyze moral dilemmas rather than act on impulse.</p>
             </div>
             <div class="about-section">
-                <h2>The Story</h2>
-                <p>The play tells the story of Prince Hamlet of Denmark, who seeks to avenge the murder of his father. After his mother, Queen Gertrude, marries his uncle Claudius—now the king—Hamlet is thrust into a battle between duty, morality, and deep self-reflection.</p>
+                <h2>Role in the Play</h2>
+                <p>Hamlet is the titular protagonist and tragic hero. Following his father's sudden death and his mother's hasty remarriage to his uncle Claudius, Hamlet falls into a deep melancholy. His role transforms from a grieving son to an avenger when his father's ghost reveals that Claudius murdered him. Hamlet feigns madness ("antic disposition") to investigate the truth while concealing his intentions.</p>
             </div>
             <div class="about-section">
-                <h2>Key Themes</h2>
-                <p><strong>Revenge & Justice:</strong> The central plot revolves around Hamlet's quest for vengeance.</p>
-                <p><strong>Madness:</strong> Questions whether Hamlet's madness is real or feigned.</p>
-                <p><strong>Morality:</strong> Explores the corruption of the Danish court.</p>
+                <h2>Perspective & Philosophy</h2>
+                <p>Hamlet represents the first modern "psychological" character in literature. He is deeply cynical about the state of humanity ("What a piece of work is man!") and obsessed with the concept of mortality (the famous "To be or not to be" soliloquy). He despises the corruption he sees in the Danish court, viewing Denmark as a "prison" and a garden of weeds.</p>
+            </div>
+            <div class="about-section">
+                <h2>Key Actions</h2>
+                <p>Hamlet stages "The Mousetrap" play to catch the King's conscience, accidentally kills Polonius behind an arras thinking it was Claudius, verbally assaults Ophelia and his mother, escapes an assassination attempt in England (sending Rosencrantz and Guildenstern to their deaths instead), and ultimately engages in a duel with Laertes.</p>
+            </div>
+            <div class="about-section">
+                <h2>Fate</h2>
+                <p>In the final act, Hamlet is wounded by Laertes' poisoned blade. Before dying, he manages to kill King Claudius and reconcile with Laertes. He dies in Horatio's arms, entrusting his friend to tell his story and endorsing Fortinbras of Norway as the new King of Denmark. His final words are, "The rest is silence."</p>
             </div>
         `,
         posts: [
             {
-                title: "One of Shakespeare's greatest tragedies",
-                content: `<p><i>Hamlet</i> is one of William Shakespeare's most influential and widely studied tragedies. It explores revenge, moral corruption, madness, mortality, and humanity's search for truth.</p><h3>Key Themes</h3><div class="themes-grid"><div class="theme-tag">⚔️ Revenge & Justice</div><div class="theme-tag">🤯 Madness</div><div class="theme-tag">⚖️ Morality & Corruption</div><div class="theme-tag">🤔 Existential Questions</div></div>`
+                title: "Just now",
+                content: "Alas, poor Yorick! I knew him, Horatio. A fellow of infinite jest, of most excellent fancy. Now he's just... bone. Makes you think about where all the politicians and lawyers end up, doesn't it? Same dust. 💀⚰️ #MementoMori #GraveyardShift"
             },
             {
-                title: "The Story",
-                content: "<p><i>Hamlet</i> tells the story of Prince Hamlet of Denmark, who seeks to avenge the murder of his father. After his mother, Queen Gertrude, marries his uncle Claudius—now the king—Hamlet is thrust into a battle between duty, morality, and deep self-reflection.</p>"
+                title: "2 hours ago",
+                content: "Is it nobler in the mind to suffer? Honestly just asking for a friend. The slings and arrows are getting a bit much today. 💀🗡️ #existential #crisis #ToBeOrNotToBe"
             },
             {
-                title: "Historical Context",
-                content: "<p>Written during the reign of Queen Elizabeth I, the play reflects an era marked by political uncertainty. It explores fear of espionage, unstable monarchies, and corruption.</p>"
+                title: "Yesterday",
+                content: "My mother just married my uncle. Literally two months after my dad died. The funeral baked meats did coldly furnish forth the marriage tables. 🤢 #gross #betrayal #familydrama"
+            },
+            {
+                title: "2 days ago",
+                content: "Thinking of putting on a play. Something... cathartic. I wrote a few lines to insert into 'The Murder of Gonzago'. Let's see if anyone sweats. 🎭👀 #Mousetrap #ThePlayIsTheThing"
+            },
+            {
+                title: "3 days ago",
+                content: "Rosencrantz and Guildenstern are definitely hiding something. They think they can play me like a pipe? I am not so easily fretted. 🤨🐍 #TrustNoOne"
             }
         ]
     },
@@ -570,30 +877,46 @@ const profiles = {
         `,
         about: `
             <div class="about-section">
-                <h2>My Role</h2>
-                <p>I am the creator of this world. I penned the tragedy of Hamlet around 1600, pouring into it the anxieties of the Elizabethan era and the timeless struggles of the human condition.</p>
+                <h2>Background & Early Life</h2>
+                <p>Born in Stratford-upon-Avon in 1564, Shakespeare was the son of a glove-maker. Little is known about his education, though he likely attended the King's New School. He married Anne Hathaway at 18 and later moved to London to pursue a career in theatre, eventually becoming a founding member of the Lord Chamberlain's Men.</p>
             </div>
             <div class="about-section">
-                <h2>Description</h2>
-                <p>Often called the 'Bard of Avon', I was an actor and playwright for the Lord Chamberlain's Men. I wrote comedies, histories, and tragedies, but Hamlet remains my longest and most discussed play.</p>
+                <h2>Role as Creator</h2>
+                <p>Shakespeare is the architect of the <i>Hamlet</i> universe. He penned the tragedy around 1599-1601, adapting it from the Nordic legend of Amleth. Through this play, he explored the anxieties of the Elizabethan era, particularly succession crises and the religious tensions between Catholicism and Protestantism.</p>
             </div>
             <div class="about-section">
-                <h2>Legacy</h2>
-                <p>I retired to Stratford some years before my death in 1616. Though I died over 400 years ago, my words live on in every performance of this play. My fate is immortality through art.</p>
+                <h2>Literary Perspective</h2>
+                <p>Shakespeare's work in <i>Hamlet</i> is revolutionary for its focus on the inner mind. He utilized the soliloquy to an extent never before seen, allowing the audience to hear a character's thoughts in real-time. He blended high tragedy with low comedy (the gravediggers) and created a vocabulary that still permeates modern English.</p>
+            </div>
+            <div class="about-section">
+                <h2>Legacy & Impact</h2>
+                <p>Often called the 'Bard of Avon', his works include 38 plays, 154 sonnets, and two long narrative poems. <i>Hamlet</i> remains his longest play and is widely considered one of the most powerful and influential works of world literature.</p>
+            </div>
+            <div class="about-section">
+                <h2>Fate</h2>
+                <p>Shakespeare retired to Stratford around 1613 and died on April 23, 1616, at the age of 52. He is buried in the chancel of the Holy Trinity Church. His epitaph places a curse on anyone who moves his bones. His First Folio was published posthumously in 1623.</p>
             </div>
         `,
         posts: [
             {
-                title: "My Role",
-                content: "I am the creator of this world. I penned the tragedy of Hamlet around 1600, pouring into it the anxieties of the Elizabethan era and the timeless struggles of the human condition."
+                title: "Just now",
+                content: "Thinking of killing off everyone in Act 5. Too much? Or just enough tragedy for a Friday night? 🤔💀 #WriterProblems #Tragedy #EveryoneDies"
             },
             {
-                title: "Description",
-                content: "Often called the 'Bard of Avon', I was an actor and playwright for the Lord Chamberlain's Men. I wrote comedies, histories, and tragedies, but Hamlet remains my longest play."
+                title: "4 hours ago",
+                content: "Invented a knock-knock joke today. 'Knock knock.' 'Who's there?' ...Wait, I need to work on this. Maybe I'll give it to the Porter in the Scottish play. 🚪😂"
             },
             {
-                title: "What happened to me?",
-                content: "I retired to Stratford some years before my death in 1616. Though I died over 400 years ago, my words live on in every performance of this play. My fate is immortality through art."
+                title: "Yesterday",
+                content: "To be or not to be... that is a catchy line. Might use that. It really captures the human condition, don't you think? ✍️✨"
+            },
+            {
+                title: "2 days ago",
+                content: "The Globe is looking fantastic today! Nothing could possibly ever happen to this beautiful wooden thatched roof structure during a performance involving cannons. 🔥🎭 #TheGlobe #TheatreLife"
+            },
+            {
+                title: "3 days ago",
+                content: "Just wrote sonnet 18. 'Shall I compare thee to a summer's day?' Felt cute, might delete later. ☀️🌹 #Poetry #SummerVibes"
             }
         ]
     },
@@ -610,30 +933,46 @@ const profiles = {
         `,
         about: `
             <div class="about-section">
-                <h2>Role in Play</h2>
-                <p>I am Hamlet's trusted confidant and the voice of reason. I am the only person Hamlet truly trusts, and I serve as a witness to the supernatural events and the tragedy that unfolds.</p>
+                <h2>Background & Education</h2>
+                <p>Horatio is a scholar from the University of Wittenberg and Hamlet's closest confidant. He is distinct from the other characters in the court of Elsinore as he is not involved in the political intrigue or familial drama directly. He represents rationality, skepticism, and stoicism.</p>
             </div>
             <div class="about-section">
-                <h2>Character Description</h2>
-                <p>I am a scholar from Wittenberg, rational and skeptical, yet loyal to the end. Unlike the other characters driven by passion or ambition, I remain level-headed throughout the crisis.</p>
+                <h2>Role in Play</h2>
+                <p>Horatio serves as the audience surrogate and the voice of reason. He is the one Hamlet trusts to confirm the Ghost's likeness to the old King. Throughout the play, he listens to Hamlet's philosophies and provides a grounded perspective to Hamlet's wilder flights of fancy. He is the only character Hamlet truly trusts.</p>
+            </div>
+            <div class="about-section">
+                <h2>Perspective</h2>
+                <p>Unlike Hamlet, who is ruled by passion and overthinking, Horatio is described as a man who is "not passion's slave." He takes things as they come with a calm demeanor. He is initially skeptical of the supernatural but accepts the evidence of his eyes.</p>
+            </div>
+            <div class="about-section">
+                <h2>Key Actions</h2>
+                <p>Horatio witnesses the Ghost first and brings the news to Hamlet. He watches Claudius during the play-within-a-play to confirm his guilt. He receives Hamlet's letters regarding the pirates and meets him upon his return to Denmark.</p>
             </div>
             <div class="about-section">
                 <h2>Fate</h2>
-                <p>At the end of the play, I attempted to drink the poison cup to die with Hamlet, but he stopped me. My burden is to live on and tell his story to the world, clearing his wounded name.</p>
+                <p>In the final scene, Horatio attempts to drink the remaining poison to die with Hamlet, in the style of an ancient Roman. Hamlet stops him, begging him to stay alive to tell the story. Horatio is the sole survivor of the main cast, tasked with explaining the tragedy to Fortinbras and the world.</p>
             </div>
         `,
         posts: [
             {
-                title: "My Role",
-                content: "I am Hamlet's trusted confidant and the voice of reason. I am the only person Hamlet truly trusts, and I serve as a witness to the supernatural events and the tragedy that unfolds."
+                title: "30 mins ago",
+                content: "I saw something crazy on the battlements last night. You guys wouldn't believe me if I told you. It looked exactly like the old King. 👻👀 #Spooky #Elsinore #NightWatch"
             },
             {
-                title: "Description",
-                content: "I am a scholar from Wittenberg, rational and skeptical, yet loyal to the end. I am not swayed by passion like Hamlet, but I stand by him through his madness."
+                title: "4 hours ago",
+                content: "Just trying to keep Hamlet out of trouble. Full time job honestly. He's talking to skulls now. 😓🤝 #Bestie #RideOrDie #ScholarLife"
             },
             {
-                title: "What happened to me?",
-                content: "I attempted to drink the poison cup to die with Hamlet, but he stopped me. My fate is to live on and tell his story to the world, clearing his wounded name."
+                title: "Yesterday",
+                content: "It's cold up here in Denmark. Missing Wittenberg uni life. The beer there was better, and fewer ghosts. 🍺📚"
+            },
+            {
+                title: "2 days ago",
+                content: "Hamlet: 'There are more things in heaven and earth, Horatio, than are dreamt of in your philosophy.' Me: Okay, but can we just go inside? It's freezing. 🥶✨"
+            },
+            {
+                title: "3 days ago",
+                content: "Why am I the only rational person in this entire castle? Everyone is either scheming, mad, or drunk. 🤷‍♂️🏰 #ElsinoreProblems"
             }
         ]
     },
@@ -650,16 +989,24 @@ const profiles = {
         `,
         about: `
             <div class="about-section">
-                <h2>Role in Play</h2>
-                <p>I am the daughter of Polonius and the potential wife of Hamlet. I am a pawn in the political games of the men around me—my father, brother, and lover.</p>
+                <h2>Background</h2>
+                <p>Ophelia is the young, beautiful daughter of Polonius and the sister of Laertes. She is a noblewoman of the court, living a sheltered life defined largely by her obedience to the men around her—her father and her brother.</p>
             </div>
             <div class="about-section">
-                <h2>Character Description</h2>
-                <p>I am young, innocent, and obedient. However, the murder of my father by the man I loved (Hamlet) shattered my mind. My madness is depicted through song and the distribution of flowers representing the court's corruption.</p>
+                <h2>Role in Play</h2>
+                <p>Ophelia serves as a love interest for Hamlet and a pawn for Polonius and Claudius. She is used to spy on Hamlet to determine the cause of his madness. Her character arc is tragic, moving from innocence and obedience to utter psychological breakdown.</p>
+            </div>
+            <div class="about-section">
+                <h2>Perspective</h2>
+                <p>Ophelia is often viewed as the victim of the play. She is pulled in conflicting directions: she loves Hamlet, but wishes to obey her father. She has no agency of her own; her thoughts and actions are constantly policed. Her madness is interpreted as the only way she can finally speak her truth, albeit in riddles and songs.</p>
+            </div>
+            <div class="about-section">
+                <h2>Key Actions</h2>
+                <p>She returns Hamlet's letters/gifts at her father's command, enduring Hamlet's cruel "Get thee to a nunnery" speech. After her father is murdered by her former lover, she breaks down mentally, handing out symbolic flowers to the court (rue, rosemary, pansies) and singing bawdy and mournful songs.</p>
             </div>
             <div class="about-section">
                 <h2>Fate</h2>
-                <p>Overcome with grief and madness, I fell into a brook while gathering flowers. My clothes, heavy with water, pulled me down to a muddy death. It was a tragic, passive drowning.</p>
+                <p>Ophelia drowns in a brook. Gertrude describes it as an accident where she fell while hanging wreaths on a willow tree, and she floated singing until her heavy clothes pulled her down. However, the gravediggers imply it may have been suicide. She is buried with "maimed rites."</p>
             </div>
         `,
         posts: [
@@ -668,16 +1015,20 @@ const profiles = {
                 content: "GUYS!!! 😱 I cannot believe it! Taylor Swift literally mentioned me in <i>The Tortured Poets Department</i>! 🤍🎵 Finally someone understands the aesthetic of tragic romance and water imagery! 🌊💐 #TTPD #ButDaddyILoveHim #Swiftie"
             },
             {
-                title: "My Role",
-                content: "I am the daughter of Polonius and the potential wife of Hamlet. I am a pawn in the political games of the men around me—my father, brother, and lover."
+                title: "5 hours ago",
+                content: "He loves me... he loves me not... 🌼🥀 returning his letters today. It hurts but dad says it's for the best. Why is love so complicated? 💔 #Heartbreak"
             },
             {
-                title: "Description",
-                content: "I am young, innocent, and obedient. However, the murder of my father by the man I loved (Hamlet) shattered my mind. I handed out flowers representing the court's corruption in my madness."
+                title: "Yesterday",
+                content: "Laertes is leaving for France. Who am I going to talk to now? 🥺 Don't do anything stupid while you're gone! Miss you already. 🇫🇷✨"
             },
             {
-                title: "What happened to me?",
-                content: "Overcome with grief and madness, I fell into a brook while gathering flowers. My clothes, heavy with water, pulled me down to a muddy death. It was a tragic drowning."
+                title: "2 days ago",
+                content: "My dad just gave me a two-hour lecture on how to behave. 'Do not believe his vows,' he said. Ugh, parents just don't understand. 🙄👨‍👧 #StrictDad"
+            },
+            {
+                title: "3 days ago",
+                content: "Found the prettiest spot by the willow tree near the brook today. The water looks so peaceful. Might weave some flower crowns later. 🌸🌿💧 #CottageCore #Nature"
             }
         ]
     },
@@ -694,30 +1045,46 @@ const profiles = {
         `,
         about: `
             <div class="about-section">
-                <h2>Role in Play</h2>
-                <p>I am the Queen of Denmark and Hamlet's mother. My hasty marriage to Claudius so soon after the King's death sparked Hamlet's rage and suspicion.</p>
+                <h2>Background</h2>
+                <p>Gertrude is the Queen of Denmark. She was the wife of King Hamlet and, shortly after his death, married his brother Claudius. This hasty marriage is the source of much of the conflict in the play.</p>
             </div>
             <div class="about-section">
-                <h2>Character Description</h2>
-                <p>I love my son, but I am also dependent on my status and my husband. Scholars often debate whether I was complicit in the murder of my first husband or simply naively unaware.</p>
+                <h2>Role in Play</h2>
+                <p>Gertrude is central to the plot as the object of Hamlet's anger and obsession. She tries to mediate between Hamlet and Claudius, wishing for her son to accept the new reality. She is generally portrayed as a woman who values status and affection over moral rigidity.</p>
+            </div>
+            <div class="about-section">
+                <h2>Perspective</h2>
+                <p>Gertrude's character is ambiguous. It is never fully clear if she knew about the murder of her first husband. She seems to genuinely love Hamlet and is distressed by his madness. She is often viewed as a character defined by her relationships with men and her desire to maintain peace within the court.</p>
+            </div>
+            <div class="about-section">
+                <h2>Key Actions</h2>
+                <p>She marries Claudius within two months of the King's funeral. She invites Rosencrantz and Guildenstern to cheer up Hamlet. In the famous 'closet scene', she is confronted violently by Hamlet and admits her soul is 'black'. She later narrates Ophelia's death to the court.</p>
             </div>
             <div class="about-section">
                 <h2>Fate</h2>
-                <p>I accidentally drank from the poisoned cup intended for Hamlet during the duel between him and Laertes. I died warning my son that the drink was poisoned.</p>
+                <p>During the final duel, she toasts to Hamlet's success and drinks from the poisoned cup that Claudius prepared for Hamlet, despite Claudius telling her not to. She dies realizing the treachery, crying out, "The drink, the drink! I am poisoned."</p>
             </div>
         `,
         posts: [
             {
-                title: "My Role",
-                content: "I am the Queen of Denmark and Hamlet's mother. My hasty marriage to Claudius sparked Hamlet's rage and suspicion."
+                title: "3 hours ago",
+                content: "Hamlet needs to stop wearing black. It's been two months! Darling, please cheer up. Everyone dies eventually, it's just nature. 🖤😩 #EmoSon #RoyalFamily #MoveOn"
             },
             {
-                title: "Description",
-                content: "I love my son, but I am also dependent on my status and my husband. I am often interpreted as either complicit or naively unaware of the murder of my first husband."
+                title: "Yesterday",
+                content: "Married the King! 💍👑 It's been a whirlwind, but Claudius is so supportive. Hoping for peace and stability for Denmark. The roast was delicious. ✨ #JustMarried #NewChapter"
             },
             {
-                title: "What happened to me?",
-                content: "I accidentally drank from the poisoned cup intended for Hamlet during the duel. I died warning my son that the drink was poisoned."
+                title: "2 days ago",
+                content: "The players are in town! I love a good show. Hope Hamlet enjoys it too, he's been so mopey lately. 🎭🍿 #FamilyNight"
+            },
+            {
+                title: "3 days ago",
+                content: "Worried about my son. He's speaking to thin air and dragging Polonius around on a rug. Does anyone have a recommendation for a good therapist in Elsinore? 🩺😰 #MomLife"
+            },
+            {
+                title: "4 days ago",
+                content: "Looking forward to the fencing match. Hamlet has been practicing! I'm betting on my boy. 🤺🏆 #TeamHamlet"
             }
         ]
     },
@@ -734,30 +1101,42 @@ const profiles = {
         `,
         about: `
             <div class="about-section">
-                <h2>Role in Play</h2>
-                <p>I am the primary antagonist. I murdered my brother to take his crown and his wife. Throughout the play, I am a manipulator who uses others to protect my stolen power.</p>
+                <h2>Background & Role</h2>
+                <p>Claudius is the brother of the late King Hamlet, the second husband of Gertrude, and the uncle/stepfather of Prince Hamlet. He is the play's antagonist—a calculating, ambitious politician who obtained the throne through murder.</p>
             </div>
             <div class="about-section">
-                <h2>Character Description</h2>
-                <p>I am a smooth politician and a guilt-ridden murderer. I try to pray for forgiveness, but I realize I cannot be forgiven while I still retain the rewards of my sin: my crown and my queen.</p>
+                <h2>Perspective</h2>
+                <p>Claudius is a Machiavellian figure. He is an effective ruler who manages foreign threats (Fortinbras) diplomatically. However, he is consumed by guilt and fear. He acknowledges his crime ("O, my offence is rank") but is unwilling to give up the prizes he won by it: his crown, his ambition, and his queen.</p>
+            </div>
+            <div class="about-section">
+                <h2>Key Actions</h2>
+                <p>He murdered his brother by pouring poison in his ear. He manipulated the court to accept his marriage to Gertrude. Throughout the play, he spies on Hamlet (using Rosencrantz, Guildenstern, and Polonius) and eventually plots Hamlet's death—first by sending him to England to be executed, and then by rigging a fencing match.</p>
             </div>
             <div class="about-section">
                 <h2>Fate</h2>
-                <p>My plots ultimately failed. Hamlet forced me to drink my own poisoned wine and stabbed me with the poisoned blade. I died by my own treachery.</p>
+                <p>His schemes unravel in the final act. Gertrude drinks the poison intended for Hamlet. Laertes reveals Claudius's treachery. Hamlet then forces Claudius to drink the poisoned wine and stabs him. He dies unmourned, killed by his own trap.</p>
             </div>
         `,
         posts: [
             {
-                title: "My Role",
-                content: "I am the villain of the story. I murdered my brother to take his crown and his wife. I am a manipulator who uses others to protect my stolen power."
+                title: "4 hours ago",
+                content: "Heavy is the head that wears the crown. 👑 But someone has to step up for Denmark during these trying times. We move forward with strength! 🇩🇰 #Leadership #NewKing #Stability"
             },
             {
-                title: "Description",
-                content: "I am a smooth politician and a guilt-ridden murderer. I try to pray for forgiveness, but I cannot give up the rewards of my sin: my crown and my queen."
+                title: "Yesterday",
+                content: "Wonderful wedding reception! Thank you to everyone who celebrated with Gertrude and me. ❤️🥂 Joy and sorrow mixed, but we are strong together. #RoyalWedding"
             },
             {
-                title: "What happened to me?",
-                content: "My plots failed. Hamlet forced me to drink my own poisoned wine and stabbed me with the poisoned blade. I died by my own treachery."
+                title: "3 days ago",
+                content: "Anyone know a good diplomatic strategy for dealing with Norway? Young Fortinbras is getting a bit rowdy on the border. ⚔️😅 #ForeignPolicy #Diplomacy"
+            },
+            {
+                title: "4 days ago",
+                content: "Does anyone else feel like they're being watched? Or maybe like a play is mocking you? Just a weird feeling. Probably nothing. 🎭👀 #Paranoia"
+            },
+            {
+                title: "5 days ago",
+                content: "Sending Hamlet to England for a little 'vacation'. I think the sea air will do him good. 🌊🚢 #Travel #BonVoyage #PleaseDontComeBack"
             }
         ]
     },
@@ -774,30 +1153,46 @@ const profiles = {
         `,
         about: `
             <div class="about-section">
-                <h2>Role in Play</h2>
-                <p>I am a foil to Hamlet. While Hamlet hesitates to take revenge, I rush into it immediately and violently after my father Polonius is killed.</p>
+                <h2>Background</h2>
+                <p>Laertes is the son of Polonius and the brother of Ophelia. He spends much of the play in France. He is portrayed as a young, hot-headed noble who acts as a foil to Hamlet. While Hamlet thinks and hesitates, Laertes acts on impulse.</p>
             </div>
             <div class="about-section">
-                <h2>Character Description</h2>
-                <p>I am fiery, impulsive, and honorable in my own way. I care deeply for my sister Ophelia. However, my anger makes me easily manipulated by Claudius into cheating during the duel.</p>
+                <h2>Role in Play</h2>
+                <p>He begins as a protective brother warning Ophelia about Hamlet. Upon returning to Denmark and finding his father dead and his sister mad, he leads a rebellion, storming the castle. He becomes the instrument of Claudius's plot to kill Hamlet.</p>
+            </div>
+            <div class="about-section">
+                <h2>Perspective</h2>
+                <p>Laertes is driven by a code of honor and revenge. Unlike Hamlet, he does not question the morality of revenge; he claims he would cut Hamlet's throat "i' the church." He cares deeply for his family, and their destruction drives him to treachery.</p>
+            </div>
+            <div class="about-section">
+                <h2>Key Actions</h2>
+                <p>He warns Ophelia to guard her chastity. He storms Elsinore demanding answers for Polonius's death. He conspires with Claudius to poison his sword tip for a rigged duel against Hamlet. He fights Hamlet in Ophelia's grave.</p>
             </div>
             <div class="about-section">
                 <h2>Fate</h2>
-                <p>In my thirst for revenge, I used a poisoned blade. In the scuffle, Hamlet and I exchanged swords, and I was cut by my own weapon. I died after confessing the truth and forgiving Hamlet.</p>
+                <p>In the duel, he wounds Hamlet with the poisoned blade. However, in a scuffle, they exchange swords, and Hamlet wounds Laertes with the same weapon. Realizing he is dying, Laertes confesses the plot, blames the King, exchanges forgiveness with Hamlet, and dies.</p>
             </div>
         `,
         posts: [
             {
-                title: "My Role",
-                content: "I am a foil to Hamlet. While Hamlet hesitates to take revenge, I rush into it immediately after my father Polonius is killed."
+                title: "1 hour ago",
+                content: "Paris bound! 🇫🇷🥖 Can't wait to get back to the city. Peace out Elsinore! Don't wait up dad. ✌️✈️ #StudyAbroad #ParisLife"
             },
             {
-                title: "Description",
-                content: "I am fiery, impulsive, and honorable in my own way, though easily manipulated by Claudius into cheating during the duel."
+                title: "5 hours ago",
+                content: "Ophelia, remember what I said about Hamlet. He's a Prince, he can't choose his own wife. Don't get your heart broken, sis. 🛡️😠 #BigBrotherMode #Advice"
             },
             {
-                title: "What happened to me?",
-                content: "In my thirst for revenge, I used a poisoned blade. In the scuffle, Hamlet and I exchanged swords, and I was cut by my own weapon. I died after forgiving Hamlet."
+                title: "Yesterday",
+                content: "Packing is the worst. How many swords do I actually need for a semester abroad? Probably all of them. ⚔️🤔 #Fencing"
+            },
+            {
+                title: "3 days ago",
+                content: "Just got back to Denmark. THE HELL HAPPENED HERE? Where is my father?! Who did this?! 😡🔥 #Rage #Revenge"
+            },
+            {
+                title: "4 days ago",
+                content: "Bought some special 'ointment' from a mountebank for my sword. Just in case I need to make a scratch really count. ☠️🗡️ #DuelReady"
             }
         ]
     },
@@ -814,30 +1209,42 @@ const profiles = {
         `,
         about: `
             <div class="about-section">
-                <h2>Role in Play</h2>
-                <p>I am the Lord Chamberlain and father to Ophelia and Laertes. I am a busybody who thinks I am wiser than I am, constantly meddling in the affairs of others.</p>
+                <h2>Background & Role</h2>
+                <p>Polonius is the Lord Chamberlain of Claudius's court, a high-ranking counselor. He is the father of Laertes and Ophelia. He portrays himself as a wise statesman, but he is often depicted as a pompous, rambling old man who loves the sound of his own voice.</p>
             </div>
             <div class="about-section">
-                <h2>Character Description</h2>
-                <p>I am known for being pompous and giving long-winded advice (such as 'To thine own self be true'). I am sycophantic to the King and willing to use my daughter to spy on Hamlet.</p>
+                <h2>Perspective</h2>
+                <p>Polonius is a cynic and a schemer. He believes he is the smartest person in the room. He is obsessed with control and surveillance, frequently spying on his own children (sending Reynaldo to spy on Laertes in Paris) and using his daughter to entrap Hamlet.</p>
+            </div>
+            <div class="about-section">
+                <h2>Key Actions</h2>
+                <p>He gives the famous "To thine own self be true" speech to Laertes. He deduces (incorrectly) that Hamlet's madness is caused by love for Ophelia. He arranges to spy on Hamlet twice—once while Hamlet talks to Ophelia, and once while Hamlet talks to Gertrude.</p>
             </div>
             <div class="about-section">
                 <h2>Fate</h2>
-                <p>I was hiding behind a tapestry (arras) to spy on Hamlet and his mother. Hamlet, hearing a noise and thinking I was the King, stabbed through the fabric, killing me instantly.</p>
+                <p>While spying on Hamlet and Gertrude behind an arras (tapestry) in the Queen's bedroom, he cries out for help when Gertrude panics. Hamlet, thinking it is the King hiding there, stabs through the fabric and kills Polonius. His death is the catalyst for Ophelia's madness and Laertes' return.</p>
             </div>
         `,
         posts: [
             {
-                title: "My Role",
-                content: "I am the Lord Chamberlain and father to Ophelia and Laertes. I am a busybody who thinks I am wiser than I am."
+                title: "1 hour ago",
+                content: "To thine own self be true. Just dropped some wisdom on my son before his trip. Hope he listens! Brevity is the soul of wit, as I always say (proceeds to talk for 20 mins). 👂📜 #Parenting #Wisdom #BriefnessIsTheSoulOfWit"
             },
             {
-                title: "Description",
-                content: "I am known for being pompous and giving long-winded advice ('To thine own self be true'). I love to spy on people to gain favor with the King."
+                title: "4 hours ago",
+                content: "I have a theory about Prince Hamlet. It's definitely love sickness. I was quite the player in my youth too, I know the signs. I suffer much extremity for love. 😉💔 #Investigator #LoveExpert"
             },
             {
-                title: "What happened to me?",
-                content: "I was hiding behind a tapestry (arras) to spy on Hamlet and his mother. Hamlet thought I was the King and stabbed through the fabric, killing me instantly."
+                title: "Yesterday",
+                content: "Hiding behind curtains is actually a great way to gather information. Highly recommend. Although this tapestry is a bit dusty. 🕵️‍♂️🤫 #SpyLife #WorkSmart"
+            },
+            {
+                title: "2 days ago",
+                content: "Reynaldo, check your DMs. I have a very specific list of rumors I need you to spread about Laertes to see if he's behaving. It's called 'bait of falsehood takes this carp of truth'. 🎣🧠 #GeniusStrategy"
+            },
+            {
+                title: "3 days ago",
+                content: "Just had a chat with the King. He agrees with me completely. Being right is a burden, but someone has to bear it. 😌🏛️ #Politics"
             }
         ]
     },
@@ -855,29 +1262,41 @@ const profiles = {
         about: `
             <div class="about-section">
                 <h2>Role in Play</h2>
-                <p>I am the catalyst of the play. I appear to my son Hamlet to reveal the true nature of my death and demand he take vengeance upon Claudius, setting the tragedy in motion.</p>
+                <p>The Ghost is the spirit of the late King Hamlet. He appears in the very first scene to the guards and Horatio, but will only speak to his son, Prince Hamlet. He is the catalyst of the entire tragedy, demanding that Hamlet avenge his "foul and most unnatural murder."</p>
             </div>
             <div class="about-section">
                 <h2>Character Description</h2>
-                <p>I am the spirit of the true King, doomed to walk the night and burn in fire during the day until my earthly crimes are purged. I appear in full armor, signifying war and unrest.</p>
+                <p>The Ghost appears dressed in the full armor King Hamlet wore when he combated Norway. He describes a painful existence in Purgatory, where he is "doomed for a certain term to walk the night" and burn in fires during the day to purge his sins, as he died without Last Rites.</p>
+            </div>
+            <div class="about-section">
+                <h2>Perspective</h2>
+                <p>The Ghost is angry and demands justice. However, he also shows care for Gertrude, explicitly telling Hamlet to leave her to heaven and her own conscience ("Taint not thy mind, nor let thy soul contrive against thy mother aught"). His nature is ambiguous—Hamlet frequently questions if it is truly his father or a demon sent to tempt him.</p>
             </div>
             <div class="about-section">
                 <h2>Fate</h2>
-                <p>I was murdered by my own brother, Claudius, who poured hebenon poison in my ear while I slept in my orchard. My death left me with no time to confess my sins.</p>
+                <p>After delivering his message and reappearing once more in the Queen's closet to sharpen Hamlet's "almost blunted purpose," the Ghost disappears. Presumably, once Claudius is killed, his spirit can find rest, though the play does not explicitly confirm this.</p>
             </div>
         `,
         posts: [
             {
-                title: "My Role",
-                content: "I am the catalyst of the play. I appear to my son Hamlet to reveal the truth of my murder and demand he take vengeance upon Claudius."
+                title: "Midnight",
+                content: "REMEMBER ME. 🔥😡 #Revenge #Justice"
             },
             {
-                title: "Description",
-                content: "I am the spirit of the true King, doomed to walk the night and burn in fire during the day until my crimes are purged. I was poisoned in my orchard while I slept."
+                title: "3:00 AM",
+                content: "Sleeping in the orchard was a mistake. 0/10 would not recommend. Note to self: Check ears for poison before napping. 🐍👂☠️"
             },
             {
-                title: "What happened to me?",
-                content: "I was murdered by my own brother, Claudius, who poured poison in my ear. My death triggered the tragedy that destroyed the entire Danish court."
+                title: "Yesterday",
+                content: "Adieu, adieu, adieu. The glow-worm shows the matin to be near. Gotta bounce before sunrise. Being a ghost is exhausting. 🌅👻 #NightShift #PurgatoryBlues"
+            },
+            {
+                title: "2 days ago",
+                content: "Why is my son taking so long? I gave him very specific instructions. SWORD + UNCLE = REVENGE. It's not that hard, Hamlet. 🙄🕰️ #Impatients"
+            },
+            {
+                title: "3 days ago",
+                content: "Just popped into Gertrude's room. She couldn't see me. Awkward. Hamlet looked like he was seeing a ghost though. 😉👻 #Invisible"
             }
         ]
     }
@@ -960,11 +1379,82 @@ function renderPosts(profileData) {
     const postsContainer = document.getElementById('postsTab');
     postsContainer.innerHTML = ''; // Clear existing
 
-    profileData.posts.forEach(post => {
+    profileData.posts.forEach((post, index) => {
+        const postId = `${currentProfile}-${index}`;
+        
         // Determine Avatar for post
         const imgHTML = profileData.image 
             ? `<img src="${profileData.image}" alt="${profileData.name}">` 
             : `<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:20px;">${profileData.emoji}</div>`;
+
+        // Get reactions for this post
+        const postReactionData = postReactions[postId] || {};
+        const userReaction = postReactionData.userReaction || null;
+        const reactionCounts = postReactionData.counts || {};
+        
+        // Calculate total reactions and get top reactions
+        const totalReactions = Object.values(reactionCounts).reduce((sum, count) => sum + count, 0);
+        const topReactions = Object.entries(reactionCounts)
+            .filter(([_, count]) => count > 0)
+            .sort(([_, a], [__, b]) => b - a)
+            .slice(0, 3)
+            .map(([type, _]) => type);
+
+        // Build reaction summary HTML
+        let reactionSummaryHTML = '';
+        if (totalReactions > 0) {
+            const iconsHTML = topReactions.map(type => 
+                `<span class="reaction-icon" style="background: ${reactions[type].color}">${reactions[type].emoji}</span>`
+            ).join('');
+            reactionSummaryHTML = `
+                <div class="reaction-summary">
+                    <div class="reaction-icons">${iconsHTML}</div>
+                    <span>${totalReactions}</span>
+                </div>
+            `;
+        }
+
+        // Determine like button state
+        const likeButtonClass = userReaction ? 'reacted' : '';
+        const likeButtonText = userReaction ? reactions[userReaction].label : 'Like';
+        const likeButtonEmoji = userReaction ? reactions[userReaction].emoji : '👍';
+
+        // Build reaction picker with selected state
+        const reactionPickerHTML = Object.entries(reactions).map(([type, data]) => {
+            const selectedClass = userReaction === type ? 'selected' : '';
+            return `<div class="reaction-option ${selectedClass}" onclick="handleReaction('${postId}', '${type}')" title="${data.label}">${data.emoji}</div>`;
+        }).join('');
+
+        // Get comments for this post
+        const comments = postComments[postId] || [];
+        const commentsToShow = comments.slice(-3); // Show last 3 comments
+        const hiddenCommentsCount = comments.length - commentsToShow.length;
+
+        // Build comments HTML
+        let commentsHTML = '';
+        if (hiddenCommentsCount > 0) {
+            commentsHTML += `<div class="view-more-comments" onclick="alert('View all ${comments.length} comments')">View ${hiddenCommentsCount} more comment${hiddenCommentsCount > 1 ? 's' : ''}</div>`;
+        }
+
+        commentsToShow.forEach((comment, commentIndex) => {
+            const commentAvatar = comment.avatar || '👤';
+            commentsHTML += `
+                <div class="comment">
+                    <div class="comment-avatar">${commentAvatar}</div>
+                    <div class="comment-content">
+                        <div class="comment-bubble">
+                            <div class="comment-author">${comment.author}</div>
+                            <div class="comment-text">${comment.text}</div>
+                        </div>
+                        <div class="comment-meta">
+                            <span>Like</span>
+                            <span>Reply</span>
+                            <span>${comment.time}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
 
         const html = `
         <div class="post-card">
@@ -978,9 +1468,139 @@ function renderPosts(profileData) {
             <div class="post-content">
                 ${post.content}
             </div>
+            ${reactionSummaryHTML}
+            <div class="post-actions">
+                <button class="action-btn ${likeButtonClass}" onclick="handleLikeClick('${postId}')">
+                    <span>${likeButtonEmoji}</span>
+                    <span>${likeButtonText}</span>
+                    <div class="reaction-picker" onclick="event.stopPropagation()">
+                        ${reactionPickerHTML}
+                    </div>
+                </button>
+                <button class="action-btn" onclick="focusCommentInput('${postId}')">
+                    <span>💬</span>
+                    <span>Comment</span>
+                </button>
+                <button class="action-btn">
+                    <span>↗️</span>
+                    <span>Share</span>
+                </button>
+            </div>
+            <div class="comments-section">
+                ${commentsHTML}
+                <div class="comment-input-container">
+                    <div class="comment-avatar">👤</div>
+                    <div class="comment-input-wrapper">
+                        <textarea 
+                            class="comment-input" 
+                            id="comment-input-${postId}"
+                            placeholder="Write a comment..." 
+                            rows="1"
+                            onkeypress="handleCommentKeypress(event, '${postId}')"
+                        ></textarea>
+                        <button class="comment-submit" onclick="submitComment('${postId}')">Post</button>
+                    </div>
+                </div>
+            </div>
         </div>`;
         postsContainer.innerHTML += html;
     });
+}
+
+function handleReaction(postId, reactionType) {
+    if (!postReactions[postId]) {
+        postReactions[postId] = { userReaction: null, counts: {} };
+    }
+
+    const postData = postReactions[postId];
+    const previousReaction = postData.userReaction;
+
+    // Remove previous reaction count
+    if (previousReaction) {
+        postData.counts[previousReaction] = (postData.counts[previousReaction] || 1) - 1;
+    }
+
+    // Add new reaction
+    if (previousReaction === reactionType) {
+        // If clicking same reaction, remove it
+        postData.userReaction = null;
+    } else {
+        // Set new reaction
+        postData.userReaction = reactionType;
+        postData.counts[reactionType] = (postData.counts[reactionType] || 0) + 1;
+    }
+
+    // Re-render posts to update UI
+    viewProfile(currentProfile);
+}
+
+function handleLikeClick(postId) {
+    if (!postReactions[postId]) {
+        postReactions[postId] = { userReaction: null, counts: {} };
+    }
+
+    const postData = postReactions[postId];
+    const currentReaction = postData.userReaction;
+
+    if (currentReaction) {
+        // Remove current reaction
+        postData.counts[currentReaction] = (postData.counts[currentReaction] || 1) - 1;
+        postData.userReaction = null;
+    } else {
+        // Add default like
+        postData.userReaction = 'like';
+        postData.counts.like = (postData.counts.like || 0) + 1;
+    }
+
+    // Re-render posts to update UI
+    viewProfile(currentProfile);
+}
+
+function focusCommentInput(postId) {
+    setTimeout(() => {
+        const input = document.getElementById(`comment-input-${postId}`);
+        if (input) {
+            input.focus();
+        }
+    }, 0);
+}
+
+function handleCommentKeypress(event, postId) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        submitComment(postId);
+    }
+}
+
+function submitComment(postId) {
+    const input = document.getElementById(`comment-input-${postId}`);
+    const commentText = input.value.trim();
+    
+    if (!commentText) return;
+    
+    if (!postComments[postId]) {
+        postComments[postId] = [];
+    }
+    
+    // Add new comment
+    postComments[postId].push({
+        author: 'You',
+        avatar: '👤',
+        text: commentText,
+        time: 'Just now'
+    });
+    
+    // Clear input and re-render
+    input.value = '';
+    viewProfile(currentProfile);
+    
+    // Refocus on the input after render
+    setTimeout(() => {
+        const newInput = document.getElementById(`comment-input-${postId}`);
+        if (newInput) {
+            newInput.focus();
+        }
+    }, 0);
 }
 
 function viewProfile(profileId) {
@@ -1038,7 +1658,7 @@ window.onload = function() {
 
 <footer style="padding: 1rem; padding-top: 2rem; display:flex; flex-direction: column; align-items: center; justify-content: center;">
         <h3 style="margin: 0;">© All Rights Reserved</h3>
-        <p>Bagato, Bas, Inocencio</p>
+        <p>Bagato, Bas, Inocencio | BSIT - 4A</p>
     </footer>
 
 </body>
