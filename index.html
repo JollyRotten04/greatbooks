@@ -513,7 +513,7 @@
     .comment-submit {
         position: absolute;
         right: 8px;
-        top: 50%;
+        top: 40%;
         transform: translateY(-50%);
         background: var(--fb-blue);
         color: white;
@@ -718,13 +718,14 @@
         
         .profile-details {
             padding-left: 16px;
-            padding-top: 140px;
+            padding-top: 200px;
+            text-align: center;
         }
         
         .profile-picture {
             left: 50%;
             transform: translateX(-50%);
-            bottom: 0;
+            top: 26px;
         }
 
         .friends-page-grid {
@@ -1314,7 +1315,7 @@ const profiles = {
         bio: 'The Tragedy itself 📖',
         location: '🇩🇰 Denmark / 🇬🇧 The Globe',
         image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1200&q=80', // Book
-        cover: 'https://images.unsplash.com/photo-1507842217153-e52fbc0dec11?auto=format&fit=crop&w=1200&q=80', // Library
+        cover: './assets/hamletStoryCover.jpeg', // Library
         emoji: '📚',
         intro: `
             <div class="info-item"><span class="info-icon">🎭</span><span>Genre: Tragedy</span></div>
@@ -1323,13 +1324,21 @@ const profiles = {
         `,
         about: `
             <div class="about-section">
+                <h2>Historical Timeline & Origins</h2>
+                <p>Context, publication, and the myth that started it all.</p>
+                <p><strong>The Origin (Amleth):</strong> Shakespeare did not invent the plot. It is based on the ancient Danish legend of Amleth (an anagram of "Hamlet") by Saxo Grammaticus. In the myth, Amleth pretends to be an imbecile (not just "mad") to survive, and his revenge is brutal and decisive, unlike Hamlet’s hesitation.</p>
+                <p><strong>Publication:</strong> Written between 1599 and 1601, near the end of Queen Elizabeth I’s reign, reflecting the era's anxiety about succession.</p>
+                <p><strong>Cultural Impact:</strong> It is Shakespeare’s most famous play, introducing idioms like "cruel to be kind" and "in my mind's eye."</p>
+            </div>
+            
+            <div class="about-section">
                 <h2>Author Biography</h2>
                 <p>Shakespeare's life and the personal grief in the text.</p>
                 <p><strong>The Hamnet Connection:</strong> Shakespeare's only son, Hamnet, died at age 11 in 1596 (a few years before the play was written).</p>
                 <p><strong>The Twin:</strong> Hamnet had a twin sister named Judith. The surviving twin's grief and the void left in the family likely influenced the play's intense focus on death and mourning.</p>
                 <p><strong>Shakespeare's Role:</strong> Legend says Shakespeare himself played the Ghost, meaning the father (playwright) appeared on stage to the son (character) to demand remembrance.</p>
             </div>
-
+            
             <div class="about-section">
                 <h2>Detailed Story Summary</h2>
                 <p>A deeper dive into the tragedy of the Prince of Denmark.</p>
@@ -1357,32 +1366,33 @@ const profiles = {
                     <li>Hamlet dies, leaving his friend Horatio alive to tell the story. Fortinbras of Norway arrives to claim the throne.</li>
                 </ul>
             </div>
-
+            
             <div class="about-section">
-                <h2>Context & Literary Merit</h2>
-                <p>Written between 1599 and 1601, <i>Hamlet</i> is often cited as the summit of Shakespeare's dramatic art. It marks a shift from the clear-cut revenge tragedies of the era (like Kyd's <i>The Spanish Tragedy</i>) to a new form of psychological drama where the conflict is primarily internal. The play is famous for its "poem unlimited" structure, blending high philosophical discourse with bawdy humor and intense action.</p>
-            </div>
-
-            <div class="about-section">
-                <h2>Origins & Historical Anxiety</h2>
-                <p>Shakespeare didn't invent the plot; he adapted it from the Scandinavian legend of <strong>Amleth</strong>, recorded by Saxo Grammaticus in the 12th century. In the original, the hero fakes madness to survive and eventually burns down the hall to kill his uncle. Shakespeare transformed this straightforward revenge tale into a complex psychological study.</p>
-            </div>
-
-            <div class="about-section">
-                <h2>Historical Context: The Elizabethan Anxiety</h2>
-                <p>Written around 1600, the play reflects the anxieties of late Elizabethan England. <strong>Queen Elizabeth I</strong> was aging without an heir, creating a national fear of succession crisis, foreign invasion, and civil war—mirrored in the play by the threat of Fortinbras and the "rotten" state of Denmark. The play's obsession with legitimacy, spying, and regime change would have resonated deeply with its original audience.</p>
+                <h2>Literary Conventions</h2>
+                <p>The techniques and structures used in the play.</p>
+                <p><strong>Genre:</strong> A Revenge Tragedy. It follows the standard conventions: a ghost, a murder, feigned madness, a play-within-a-play, and a catastrophe where almost everyone dies.</p>
+                
+                <h3>Narrative Techniques:</h3>
+                <p><strong>Soliloquies:</strong> The play is famous for its internal monologues (e.g., "To be, or not to be"). This was revolutionary because it halted the action to explore the character's psychology.</p>
+                <p><strong>The Play-Within-A-Play:</strong> A "meta-theatrical" device used to mirror the main plot and catch the King's conscience.</p>
+                
+                <h3>Literary Devices:</h3>
+                <p><strong>Dramatic Irony:</strong> We know Hamlet is sane while other characters think he is mad; we know Claudius is guilty before the other characters do.</p>
+                <p><strong>Foil Characters:</strong> Laertes and Fortinbras act as "foils" to Hamlet. They are also sons avenging fathers, but they act quickly and violently, highlighting Hamlet's delay.</p>
             </div>
             
             <div class="about-section">
-                <h2>Universal Themes</h2>
-                <p><strong>Action vs. Inaction:</strong> The central conflict is Hamlet's delay. Why does he hesitate? Is it cowardice, moral scruple, or over-intellectualization? This paralysis is a universal human experience.<br>
-                <strong>Appearance vs. Reality:</strong> "One may smile, and smile, and be a villain." The play is obsessed with the difference between what seems to be (Claudius as a benevolent king) and what is (Claudius as a murderer).<br>
-                <strong>Mortality:</strong> From the Ghost to the graveyard scene with Yorick's skull, the play relentlessly questions what happens after death ("The undiscovered country").</p>
-            </div>
-
-            <div class="about-section">
-                <h2>Psychological Depth & The Tragic Hero</h2>
-                <p>Hamlet is the quintessential tragic hero, but his "fatal flaw" (hamartia) is debated. Is it his indecision? His Oedipal complex (as Freud suggested)? Or is he simply a man of acute moral sensitivity trapped in a corrupt world? He is the first character in literature to possess a fully realized inner life, shown through his soliloquies where he speaks his raw, unfiltered thoughts to the audience.</p>
+                <h2>Literary Analysis</h2>
+                <p>Themes, motifs, and critical perspectives.</p>
+                
+                <h3>Thematic Analysis:</h3>
+                <p><strong>Action vs. Inaction:</strong> The central conflict isn't between Hamlet and the King, but within Hamlet himself. He overthinks ("paralysis of analysis") and questions the morality of revenge.</p>
+                <p><strong>Appearance vs. Reality:</strong> Everyone is spying (Polonius, Rosencrantz, Guildenstern). Characters hide behind masks—Claudius hides his crime behind a smile; Hamlet hides his plans behind madness.</p>
+                
+                <h3>Motifs:</h3>
+                <p><strong>Disease & Rot:</strong> "Something is rotten in the state of Denmark." The King's crime is depicted as a physical infection spreading through the country.</p>
+                <p><strong>Ears & Hearing:</strong> The murder was committed through the ear (poison); characters constantly eavesdrop; Hamlet asks Horatio to "lend me your ears."</p>
+                <p><strong>Yorick's Skull:</strong> The physical symbol of the theme Memento Mori (remember you must die).</p>
             </div>
 
             <div class="about-section">
@@ -1391,21 +1401,24 @@ const profiles = {
                 
                 <h3>The "Purist" Version:</h3>
                 <p><strong>Hamlet (1996):</strong> Directed by Kenneth Branagh. It is one of the few film versions to use the complete, uncut text of the play, running over 4 hours long.</p>
-
+                
                 <h3>The "Classic" Version:</h3>
                 <p><strong>Hamlet (1948):</strong> Directed by and starring Laurence Olivier. It strips the play of its political elements to focus purely on the psychological drama.</p>
-
+                
                 <h3>The "Pop Culture" Twist:</h3>
                 <p><strong>The Lion King (1994):</strong> Disney's loose adaptation. Simba is Hamlet, Mufasa is the King, Scar is Claudius, and Timon & Pumbaa are Rosencrantz & Guildenstern.</p>
                 <p><strong>Rosencrantz & Guildenstern Are Dead (1990):</strong> A film (based on a play) that retells the story from the perspective of the two confused minor characters.</p>
-
+                
                 <h3>Modern Settings:</h3>
                 <p><strong>Hamlet (2000):</strong> Starring Ethan Hawke. Set in modern-day New York City; the "King" is the CEO of the Denmark Corporation.</p>
             </div>
-
+            
             <div class="about-section">
-                <h2>Why is it a Great Book?</h2>
-                <p><i>Hamlet</i> is considered a Great Book because of its inexhaustible interpretive possibilities. It holds a mirror up to every generation; Romantic critics saw Hamlet as a sensitive soul, Freudians saw suppressed desire, and modernists saw existential despair. Its language ("To be or not to be," "This above all: to thine own self be true") has become part of the very fabric of the English language.</p>
+                <h2>Why is it a "Great Book"?</h2>
+                <p>The literary significance.</p>
+                <p><strong>Invention of the Human:</strong> Literary critic Harold Bloom argued that Hamlet "invented the human." It was the first time a character was shown to have such a complex inner life that contradicted their outer actions.</p>
+                <p><strong>Infinite Interpretation:</strong> The play is ambiguous. Is Hamlet truly mad? Does he love Ophelia? This allows every generation to see their own struggles in the character.</p>
+                <p><strong>Linguistic Legacy:</strong> It contributes more phrases to modern English than any other single work. It captures the universal human struggle with mortality and the difficulty of making choices.</p>
             </div>
         `,
         posts: [
