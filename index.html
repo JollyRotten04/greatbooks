@@ -394,44 +394,65 @@
         color: var(--fb-blue);
     }
 
+    /* REACTION PICKER STYLING */
     .reaction-picker {
         position: absolute;
         bottom: 100%;
         left: 50%;
         transform: translateX(-50%) scale(0);
-        margin-bottom: 8px;
+        margin-bottom: 10px; /* Slight gap for visuals */
         background: #fff;
         border-radius: 50px;
-        padding: 8px 12px;
+        padding: 6px 12px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         display: flex;
         gap: 6px;
         opacity: 0;
-        transition: all 0.2s ease;
         pointer-events: none;
         z-index: 10;
+        
+        /* UPDATED: Transition logic for delayed closing */
+        transition: all 0.3s ease;
+        transition-delay: 0.5s; /* Delay before it hides (Closing Delay) */
+    }
+
+    /* THE INVISIBLE BRIDGE FIX:
+       Creates a transparent area between the button and the picker 
+       so the mouse doesn't "fall" into the gap.
+    */
+    .reaction-picker::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 20px; /* Covers the margin gap */
+        background: transparent;
     }
 
     .action-btn:hover .reaction-picker {
         transform: translateX(-50%) scale(1);
         opacity: 1;
         pointer-events: all;
+        
+        /* UPDATED: Transition logic for delayed opening */
+        transition-delay: 0.4s; /* Delay before it shows (Opening Delay) */
     }
 
     .reaction-option {
-        width: 40px;
-        height: 40px;
+        width: 42px;
+        height: 42px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 28px;
         cursor: pointer;
-        transition: transform 0.2s;
+        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .reaction-option:hover {
-        transform: scale(1.4);
+        transform: scale(1.5) translateY(-5px); /* Pop up slightly */
     }
 
     .reaction-option.selected {
@@ -622,6 +643,15 @@
         line-height: 1.6;
     }
 
+    .about-section ul {
+        margin: 8px 0 8px 24px;
+        padding: 0;
+    }
+
+    .about-section li {
+        margin-bottom: 8px;
+    }
+
     /* FRIENDS TAB */
     .friends-page-grid {
         display: grid;
@@ -681,7 +711,6 @@
         display: none !important;
     }
 
-    /* Standard Mobile View */
     @media (max-width: 900px) {
         .main-content {
             grid-template-columns: 1fr;
@@ -689,38 +718,17 @@
         
         .profile-details {
             padding-left: 16px;
-            padding-top: 200px; /* Reduced for overlap */
-            text-align: center; /* Center text on mobile */
+            padding-top: 140px;
         }
         
         .profile-picture {
             left: 50%;
             transform: translateX(-50%);
-            top: 20px; /* Adjust top overlap */
+            bottom: 0;
         }
 
         .friends-page-grid {
             grid-template-columns: 1fr;
-        }
-    }
-
-    /* Landscape / Short Screen Fix */
-    @media (max-height: 500px) and (orientation: landscape) {
-        .cover-photo {
-            height: 200px;
-        }
-        
-        .profile-picture {
-            width: 120px;
-            height: 120px;
-            top: -60px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .profile-details {
-            padding-top: 60px;
-            text-align: center;
         }
     }
 </style>
@@ -746,7 +754,7 @@
             </div>
         <div class="profile-details">
             <h1 class="profile-name" id="profileName">Hamlet, Prince of Denmark</h1>
-            <p class="profile-bio" id="profileBio">To be, or not to be... 💀</p>
+            <p class="profile-bio" id="profileBio">To be, or not to be—that is the question</p>
             <p class="profile-bio" id="profileLocation">🏰 Lives in Elsinore Castle • 👑 Prince of Denmark</p>
             <div class="profile-tabs">
                 <div class="tab active" onclick="switchTab('posts')">Posts</div>
@@ -1297,6 +1305,129 @@ const profiles = {
             {
                 title: "3 days ago",
                 content: "Just popped into Gertrude's room. She couldn't see me. Awkward. Hamlet looked like he was seeing a ghost though. 😉👻 #Invisible"
+            }
+        ]
+    },
+    // NEW CHARACTER ADDED HERE
+    hamlet_story: {
+        name: 'Hamlet (Story)',
+        bio: 'The Tragedy itself 📖',
+        location: '🇩🇰 Denmark / 🇬🇧 The Globe',
+        image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1200&q=80', // Book
+        cover: 'https://images.unsplash.com/photo-1507842217153-e52fbc0dec11?auto=format&fit=crop&w=1200&q=80', // Library
+        emoji: '📚',
+        intro: `
+            <div class="info-item"><span class="info-icon">🎭</span><span>Genre: Tragedy</span></div>
+            <div class="info-item"><span class="info-icon">📅</span><span>Written: 1599-1601</span></div>
+            <div class="info-item"><span class="info-icon">📜</span><span>Lines: 4,042</span></div>
+        `,
+        about: `
+            <div class="about-section">
+                <h2>Author Biography</h2>
+                <p>Shakespeare's life and the personal grief in the text.</p>
+                <p><strong>The Hamnet Connection:</strong> Shakespeare's only son, Hamnet, died at age 11 in 1596 (a few years before the play was written).</p>
+                <p><strong>The Twin:</strong> Hamnet had a twin sister named Judith. The surviving twin's grief and the void left in the family likely influenced the play's intense focus on death and mourning.</p>
+                <p><strong>Shakespeare's Role:</strong> Legend says Shakespeare himself played the Ghost, meaning the father (playwright) appeared on stage to the son (character) to demand remembrance.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Detailed Story Summary</h2>
+                <p>A deeper dive into the tragedy of the Prince of Denmark.</p>
+                
+                <h3>Phase 1: The Ghost and the Vow</h3>
+                <p>Prince Hamlet is depressed. His father (King Hamlet) has died, and his mother (Gertrude) immediately married his uncle (Claudius), who took the throne. The ghost of King Hamlet appears and tells Hamlet that Claudius murdered him by pouring poison in his ear. He demands revenge. Hamlet agrees but is plagued by doubt: Is the ghost real, or a demon tempting him?</p>
+
+                <h3>Phase 2: The Madness and the Test</h3>
+                <p>To hide his intentions, Hamlet pretends to be mad. He rejects Ophelia (his love interest), causing her father, Polonius, to believe Hamlet is "mad with love." To prove Claudius's guilt, Hamlet hires actors to perform a play (The Mousetrap) that reenacts the murder.</p>
+
+                <h3>Phase 3: The Turning Point</h3>
+                <p>During the play, Claudius panics and storms out, proving his guilt. Hamlet has a chance to kill Claudius while he is praying but hesitates, worrying that killing him in prayer will send his soul to heaven. Instead, Hamlet confronts his mother. Hearing a noise behind a tapestry (arras), he stabs through it, thinking it is the King. It is actually Polonius, whom he kills.</p>
+
+                <h3>Phase 4: The Spiral</h3>
+                <p>Claudius sends Hamlet away to England with secret orders to have him executed, but Hamlet escapes. Back in Denmark, Ophelia goes truly mad with grief over her father's death and drowns herself. Her brother, Laertes, returns demanding revenge. Claudius manipulates Laertes into a fencing match with Hamlet, using a poisoned blade.</p>
+
+                <h3>Phase 5: The Tragic Finale</h3>
+                <p>The duel begins.</p>
+                <ul>
+                    <li>Gertrude accidentally drinks poisoned wine intended for Hamlet and dies.</li>
+                    <li>Laertes wounds Hamlet with the poisoned blade.</li>
+                    <li>In a scuffle, they switch swords, and Hamlet wounds Laertes with the poisoned blade.</li>
+                    <li>Dying, Laertes reveals the King's plot.</li>
+                    <li>Hamlet finally forces Claudius to drink the poison, killing him.</li>
+                    <li>Hamlet dies, leaving his friend Horatio alive to tell the story. Fortinbras of Norway arrives to claim the throne.</li>
+                </ul>
+            </div>
+
+            <div class="about-section">
+                <h2>Context & Literary Merit</h2>
+                <p>Written between 1599 and 1601, <i>Hamlet</i> is often cited as the summit of Shakespeare's dramatic art. It marks a shift from the clear-cut revenge tragedies of the era (like Kyd's <i>The Spanish Tragedy</i>) to a new form of psychological drama where the conflict is primarily internal. The play is famous for its "poem unlimited" structure, blending high philosophical discourse with bawdy humor and intense action.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Origins & Historical Anxiety</h2>
+                <p>Shakespeare didn't invent the plot; he adapted it from the Scandinavian legend of <strong>Amleth</strong>, recorded by Saxo Grammaticus in the 12th century. In the original, the hero fakes madness to survive and eventually burns down the hall to kill his uncle. Shakespeare transformed this straightforward revenge tale into a complex psychological study.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Historical Context: The Elizabethan Anxiety</h2>
+                <p>Written around 1600, the play reflects the anxieties of late Elizabethan England. <strong>Queen Elizabeth I</strong> was aging without an heir, creating a national fear of succession crisis, foreign invasion, and civil war—mirrored in the play by the threat of Fortinbras and the "rotten" state of Denmark. The play's obsession with legitimacy, spying, and regime change would have resonated deeply with its original audience.</p>
+            </div>
+            
+            <div class="about-section">
+                <h2>Universal Themes</h2>
+                <p><strong>Action vs. Inaction:</strong> The central conflict is Hamlet's delay. Why does he hesitate? Is it cowardice, moral scruple, or over-intellectualization? This paralysis is a universal human experience.<br>
+                <strong>Appearance vs. Reality:</strong> "One may smile, and smile, and be a villain." The play is obsessed with the difference between what seems to be (Claudius as a benevolent king) and what is (Claudius as a murderer).<br>
+                <strong>Mortality:</strong> From the Ghost to the graveyard scene with Yorick's skull, the play relentlessly questions what happens after death ("The undiscovered country").</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Psychological Depth & The Tragic Hero</h2>
+                <p>Hamlet is the quintessential tragic hero, but his "fatal flaw" (hamartia) is debated. Is it his indecision? His Oedipal complex (as Freud suggested)? Or is he simply a man of acute moral sensitivity trapped in a corrupt world? He is the first character in literature to possess a fully realized inner life, shown through his soliloquies where he speaks his raw, unfiltered thoughts to the audience.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Notable Adaptations</h2>
+                <p>How the story has been retold across centuries and genres.</p>
+                
+                <h3>The "Purist" Version:</h3>
+                <p><strong>Hamlet (1996):</strong> Directed by Kenneth Branagh. It is one of the few film versions to use the complete, uncut text of the play, running over 4 hours long.</p>
+
+                <h3>The "Classic" Version:</h3>
+                <p><strong>Hamlet (1948):</strong> Directed by and starring Laurence Olivier. It strips the play of its political elements to focus purely on the psychological drama.</p>
+
+                <h3>The "Pop Culture" Twist:</h3>
+                <p><strong>The Lion King (1994):</strong> Disney's loose adaptation. Simba is Hamlet, Mufasa is the King, Scar is Claudius, and Timon & Pumbaa are Rosencrantz & Guildenstern.</p>
+                <p><strong>Rosencrantz & Guildenstern Are Dead (1990):</strong> A film (based on a play) that retells the story from the perspective of the two confused minor characters.</p>
+
+                <h3>Modern Settings:</h3>
+                <p><strong>Hamlet (2000):</strong> Starring Ethan Hawke. Set in modern-day New York City; the "King" is the CEO of the Denmark Corporation.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Why is it a Great Book?</h2>
+                <p><i>Hamlet</i> is considered a Great Book because of its inexhaustible interpretive possibilities. It holds a mirror up to every generation; Romantic critics saw Hamlet as a sensitive soul, Freudians saw suppressed desire, and modernists saw existential despair. Its language ("To be or not to be," "This above all: to thine own self be true") has become part of the very fabric of the English language.</p>
+            </div>
+        `,
+        posts: [
+            {
+                title: "Act I",
+                content: "Something is rotten in the state of Denmark... 👻🏰 #Exposition #Ghost"
+            },
+            {
+                title: "Act II",
+                content: "Though this be madness, yet there is method in't. 🤪🎭 #RisingAction #AnticDisposition"
+            },
+            {
+                title: "Act III",
+                content: "The play's the thing wherein I'll catch the conscience of the King! 🐁👑 #Climax #TheMousetrap"
+            },
+            {
+                title: "Act IV",
+                content: "When sorrows come, they come not single spies, but in battalions. 🌊🥀 #FallingAction #Ophelia"
+            },
+            {
+                title: "Act V",
+                content: "The rest is silence. ⚔️💀 #Catastrophe #TheEnd"
             }
         ]
     }
